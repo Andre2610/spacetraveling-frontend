@@ -71,4 +71,27 @@ export const getUserWithStoredToken = () => {
   };
 };
 
-export function signUp(firstName, lastName, email, password) {}
+export const signUp = (signUpcredentials) => {
+  return async (dispatch, getState) => {
+    // dispatch(appLoading());
+    try {
+      console.log("my signupCredentials", signUpcredentials);
+      const res = await axios.post(`${URL}/auth/signup`, {
+        signUpcredentials,
+      });
+      console.log("my res", res.data);
+      dispatch(loginSuccess(res.data));
+      //   dispatch(showMessageWithTimeout("success", true, "account created"));
+      //   dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        // dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        // dispatch(setMessage("danger", true, error.message));
+      }
+      //   dispatch(appDoneLoading());
+    }
+  };
+};
