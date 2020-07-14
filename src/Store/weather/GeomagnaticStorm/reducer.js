@@ -1,9 +1,13 @@
-const initialState = {};
+import { GST_FETCH_SUCCESS } from "./actions";
+const initialState = {
+  gstID: null,
+  startTime: null,
+};
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    // case typeName:
-    //     return { ...state, ...payload }
+    case GST_FETCH_SUCCESS:
+      return { ...state, ...payload };
 
     default:
       return state;
