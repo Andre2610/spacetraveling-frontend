@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
+import { singUp } from "../../Store/user/actions";
 
 export default function SingUp() {
     const [firstName, setfirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const dispatch = useDispatch()
 
     function submitForm(event) {
         event.preventDefault()
+        dispatch(singUp(firstName, lastName, email, password));
 
         setfirstName("")
         setLastName("")
@@ -46,7 +49,6 @@ export default function SingUp() {
                         value={password}
                         onChange={event => setPassword(event.target.value)}
                         type="password"
-                        placeholder
                         required
                     />
                     <button type="submit"> Sign Up</button>
