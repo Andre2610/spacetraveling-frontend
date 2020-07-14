@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import Button from "@material-ui/core/Button";
+// import InputLabel from "@material-ui/core/InputLabel";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
+// import Button from "@material-ui/core/Button";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function SelectDestinationForm() {
   const [origin, setOrigin] = useState();
   const [destination, setDestination] = useState();
+  const dispatch = useDispatch();
 
   function submitHandler(event) {
     event.preventDefault();
