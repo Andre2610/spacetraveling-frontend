@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import SingUp from "./Components/Auth/SingUp";
+import AuthModal from "./Components/Auth/AuthModal";
 
 function App() {
-  return <div className="App">
-    <SingUp />
-  </div>;
+  return (
+    <div className="App">
+      <AuthModal />
+    </div>
+  );
 }
 
 export default App;
