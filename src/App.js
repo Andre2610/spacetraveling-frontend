@@ -5,11 +5,7 @@ import CoronalMassInjection from "./Components/APIs/SpaceWeather/CoronalMassInje
 import SolarFlares from "./Components/APIs/SpaceWeather/SolarFlares";
 
 function App() {
-  return (
-    <div className='App'>
-      <SolarFlares />
-    </div>
-  );
+  return <div className='App'></div>;
 }
 
 export default App;
