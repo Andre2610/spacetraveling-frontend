@@ -1,5 +1,4 @@
-export const URL = process.env.URL || "http://localhost:4000";
-
+export const URL = process.env.URL || "http://localhost:5000";
 export const DEFAULT_MESSAGE_TIMEOUT = 3000;
 export const NASAK = `Vm46Sua8HKQqccljF8wS2RdaxtfGeHyBLf8KHBzT`;
 
