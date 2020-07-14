@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../Store/user/actions";
 
-export default function Login() {
+export default function Login(props) {
+  const { handleClose, set_modalForm } = props;
+  const dispatch = useDispatch();
   const initialState = { email: "", password: "" };
-  const [credentials, set_credentials] = useState({});
+  const [credentials, set_credentials] = useState(initialState);
 
   function submitForm(event) {
     event.preventDefault();
-    // dispatch(singUp(signUpcredentials));
+    dispatch(login(credentials));
 
     set_credentials(initialState);
   }
@@ -23,8 +27,8 @@ export default function Login() {
                 email: event.target.value,
               })
             }
-            type="text"
-            placeholder="please enter your first name"
+            type="email"
+            placeholder="Please enter your email"
             required
           />
           <input
@@ -35,8 +39,8 @@ export default function Login() {
                 password: event.target.value,
               })
             }
-            type="text"
-            placeholder="please enter your last name"
+            type="password"
+            placeholder="Please enter your password"
             required
           />
           <button type="submit" onClick={submitForm}>
@@ -44,6 +48,16 @@ export default function Login() {
           </button>
         </div>
       </form>
+      <p>
+        Don't have an account yet? Sign up{" "}
+        <span
+          onClick={(e) => set_modalForm("Signup")}
+          style={{ cursor: "pointer" }}
+          color="blue.500"
+        >
+          HERE
+        </span>
+      </p>
     </div>
   );
 }
