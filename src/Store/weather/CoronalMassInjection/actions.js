@@ -15,7 +15,7 @@ export function getCME() {
     try {
       const res = await axios.get(`${NASA_CME_URL}&api_key=${NASAK}`);
       //   console.log("whats the result?", res.data);
-      dispatch(fetchedCMEInfo(res.data));
+      dispatch(fetchedCMEInfo(res.data[0]));
     } catch (e) {
       console.log(e);
     }
