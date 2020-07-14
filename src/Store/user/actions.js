@@ -1,6 +1,1 @@
-
-
-
-export function singUp(firstName, lastName, email, password) {
-
-}
+export function signUp(firstName, lastName, email, password) {}
