@@ -4,6 +4,7 @@ import CoronalMassInjection from "./Components/APIs/SpaceWeather/CoronalMassInje
 import SolarFlares from "./Components/APIs/SpaceWeather/SolarFlares";
 import AuthModal from "./Components/Auth/AuthModal";
 
+
 function App() {
   return (
     <div className="App">
