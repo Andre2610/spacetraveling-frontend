@@ -4,12 +4,7 @@ import SingUp from "./Components/Auth/SingUp";
 import CoronalMassInjection from "./Components/APIs/SpaceWeather/CoronalMassInjection";
 
 function App() {
-  return (
-    <div className='App'>
-      <SingUp />
-      <CoronalMassInjection />
-    </div>
-  );
+  return <div className='App'></div>;
 }
 
 export default App;
