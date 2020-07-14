@@ -1,14 +1,19 @@
-const initialState = {
+import { LOGIN_SUCCESS } from "./actions";
 
-}
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  token: localStorage.getItem("token"),
+};
 
 export default (state = initialState, { type, payload }) => {
-    switch (type) {
+  switch (type) {
+    case LOGIN_SUCCESS:
+      localStorage.setItem("token", payload.token);
+      return { ...state, ...payload };
 
-        // case typeName:
-        //     return { ...state, ...payload }
-
-        default:
-            return state
-    }
-}
+    default:
+      return state;
+  }
+};

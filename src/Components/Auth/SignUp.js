@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import { singUp } from "../../Store/user/actions";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signUp } from "../../Store/user/actions";
 
-export default function SingUp() {
+export default function SingUp(props) {
+  const { handleClose, set_modalForm } = props;
+  const dispatch = useDispatch();
   const initialState = { firstName: "", lastName: "", email: "", password: "" };
   const [signUpcredentials, set_signUpcredentials] = useState(initialState);
-  const dispatch = useDispatch();
 
   function submitForm(event) {
     event.preventDefault();
-    dispatch(singUp(signUpcredentials));
+    dispatch(signUp(signUpcredentials));
 
     set_signUpcredentials(initialState);
   }
@@ -71,6 +71,16 @@ export default function SingUp() {
           </button>
         </div>
       </form>
+      <p>
+        Don't have an account yet? Sign up{" "}
+        <span
+          onClick={(e) => set_modalForm("Login")}
+          style={{ cursor: "pointer" }}
+          color="blue.500"
+        >
+          HERE
+        </span>
+      </p>
     </div>
   );
 }
