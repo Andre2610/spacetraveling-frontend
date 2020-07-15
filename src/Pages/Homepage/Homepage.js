@@ -7,14 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCoronalMassInjection } from "../../Store/weather/CoronalMassInjection/selectors";
 import { getCME } from "../../Store/weather/CoronalMassInjection/actions";
 import { getPlanetInfo } from "../../Store/planet/actions";
+import { selectPlanet } from "../../Store/planet/selectors";
 
 export default function Homepage() {
   const dispatch = useDispatch();
+  const planetData = useSelector(selectPlanet);
 
   useEffect(() => {
     dispatch(getCME());
     dispatch(getPlanetInfo());
   }, [dispatch]);
+
+  console.log("Correct Data?", planetData);
 
   const cmi = useSelector(selectCoronalMassInjection);
   console.log(cmi.note);
