@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
 import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
 import Weather from "../../Components/UI/Weather/Weather";
+import PlanetCarousel from "../../Components/UI/PlanetCarousel/PlanetCarousel";
 import Image from "../../Images/banner.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCoronalMassInjection } from "../../Store/weather/CoronalMassInjection/selectors";
@@ -21,7 +22,7 @@ export default function Homepage() {
   console.log("Correct Data?", planetData);
 
   const cmi = useSelector(selectCoronalMassInjection);
-  console.log(cmi.note);
+
   return (
     <div>
       <Jumbotron fluid>
@@ -43,7 +44,7 @@ export default function Homepage() {
             </Col>
             <Row noGutters={true}>
               <Col xs={12} sm={8} style={{ border: "1px solid green" }}>
-                PLANET CARDS
+                <PlanetCarousel />
               </Col>
               <Col xs={12} sm={4} style={{ border: "1px solid yellow" }}>
                 <Weather objectToShow={cmi} />
