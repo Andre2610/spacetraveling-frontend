@@ -53,10 +53,8 @@ export default function Homepage() {
   return (
     <div>
       <Row className="bannerMod" noGutters={true}>
-        <Col xs={12} style={{ border: "1px solid black" }}>
-          <Container>
-            <img className="Piece" src={Image} alt="piece" />
-          </Container>
+        <Col xs={12}>
+          <img className="Rocket" src={Image} alt="rocket" />
         </Col>
       </Row>
       <Container>
