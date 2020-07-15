@@ -11,6 +11,7 @@ export default function Weather(props) {
       <p>{sourceLocation}</p>
       <h5>Notes: </h5>
       <p>{note}</p>
+      <p>Link</p>
     </div>
   );
 }
