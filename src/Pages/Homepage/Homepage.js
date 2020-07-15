@@ -15,41 +15,13 @@ import Image from "../../Images/banner.svg";
 export default function Homepage() {
   const dispatch = useDispatch();
   const planetData = useSelector(selectPlanet);
-
   useEffect(() => {
     dispatch(getCME());
     dispatch(getPlanetInfo());
   }, [dispatch]);
 
-  console.log("Correct Data?", planetData);
-
   const cmi = useSelector(selectCoronalMassInjection);
-  const planetDataTest = [
-    {
-      key: 0,
-      id: 0,
-      name: "Test Planet",
-      distance: 1000000,
-      imageUrl:
-        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
-    },
-    {
-      key: 1,
-      id: 1,
-      name: "Test Planet",
-      distance: 1000000,
-      imageUrl:
-        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
-    },
-    {
-      key: 2,
-      id: 2,
-      name: "Test Planet",
-      distance: 1000000,
-      imageUrl:
-        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
-    },
-  ];
+
   return (
     <div>
       <Row className="bannerMod" noGutters={true}>
@@ -70,7 +42,7 @@ export default function Homepage() {
             </Col>
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
-                <PlanetCarousel planetsToShow={planetDataTest} />
+                <PlanetCarousel planetsToShow={planetData} />
               </Col>
 
               <Col xs={12} sm={4} style={{ border: "1px solid yellow" }}>
