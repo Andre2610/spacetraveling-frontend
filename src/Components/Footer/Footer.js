@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import PlanetForm from "../../Components/UI/PlanetForm";
+import PlanetForm from "../UI/PlanetForm/PlanetForm";
 
 export default function Footer() {
   return (
