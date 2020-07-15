@@ -22,6 +22,7 @@ import {
   Button,
 } from "@material-ui/core";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
+import { Link } from "react-router-dom";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -84,7 +85,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align="center"
+            align='center'
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -148,18 +149,18 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 ? (
         <Typography
           className={classes.title}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
+          color='inherit'
+          variant='subtitle1'
+          component='div'
         >
           {numSelected} selected
         </Typography>
       ) : (
         <Typography
           className={classes.title}
-          variant="h6"
-          id="tableTitle"
-          component="div"
+          variant='h6'
+          id='tableTitle'
+          component='div'
         >
           Choose your flight
         </Typography>
@@ -244,12 +245,12 @@ export default function EnhancedTable(props) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <TableContainer>
-          <RadioGroup aria-label="flights" name="flights">
+          <RadioGroup aria-label='flights' name='flights'>
             <Table
               className={classes.table}
-              aria-labelledby="tableTitle"
+              aria-labelledby='tableTitle'
               size={dense ? "small" : "medium"}
-              aria-label="enhanced table"
+              aria-label='enhanced table'
             >
               <EnhancedTableHead
                 classes={classes}
@@ -267,24 +268,24 @@ export default function EnhancedTable(props) {
                     return (
                       <TableRow hover key={row.id}>
                         <TableCell
-                          component="th"
-                          align="center"
+                          component='th'
+                          align='center'
                           id={labelId}
-                          scope="row"
-                          padding="none"
+                          scope='row'
+                          padding='none'
                         >
                           {row.departingDate}
                         </TableCell>
-                        <TableCell align="center">{row.planetId}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">placeholder</TableCell>
-                        <TableCell align="center">
+                        <TableCell align='center'>{row.planetId}</TableCell>
+                        <TableCell align='center'>{row.price}</TableCell>
+                        <TableCell align='center'>placeholder</TableCell>
+                        <TableCell align='center'>
                           <FormControlLabel
                             value={row.id}
                             onClick={(e) => handleChange(row)}
                             control={
                               <Radio
-                                color="primary"
+                                color='primary'
                                 checked={
                                   parseInt(selected.id) === parseInt(row.id)
                                 }
@@ -306,20 +307,22 @@ export default function EnhancedTable(props) {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
-        <Button color="primary" variant="contained">
-          Click me
-        </Button>
+        <Link to='/booking/checkout'>
+          <Button color='primary' variant='contained'>
+            Book now!
+          </Button>
+        </Link>
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
+        label='Dense padding'
       />
     </div>
   );
