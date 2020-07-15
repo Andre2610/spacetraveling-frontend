@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import user from "./user/reducer";
 import coronalMassInjection from "./weather/CoronalMassInjection/reducer";
 import solarFlare from "./weather/SolarFlare/reducer";
 import GeomagnaticStorm from "./weather/GeomagnaticStorm/reducer";
+import user from "./user/reducer";
 import planet from "./planet/reducer";
+import trips from "./trips/reducer";
 
 export default combineReducers({
   user,
@@ -11,4 +12,5 @@ export default combineReducers({
   solarFlare,
   GeomagnaticStorm,
   planet,
+  trips,
 });

@@ -1,5 +1,4 @@
 import Axios from "axios";
-import axios from "axios";
 import { URL } from "../../Config/constants";
 
 export const FETCH_PLANET_INFO_SUCCESS = "FETCH_PLANET_INFO_SUCCESS";
