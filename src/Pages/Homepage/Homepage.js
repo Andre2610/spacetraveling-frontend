@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
 import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
+import Weather from "../../Components/UI/Weather/Weather";
 import Image from "../../Images/banner.jpeg";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCoronalMassInjection } from "../../Store/weather/CoronalMassInjection/selectors";
+import { getCME } from "../../Store/weather/CoronalMassInjection/actions";
 
 export default function Homepage() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCME());
+  }, [dispatch]);
+
+  const cmi = useSelector(selectCoronalMassInjection);
+  console.log(cmi.note);
   return (
     <div>
       <Jumbotron fluid>
@@ -27,7 +39,7 @@ export default function Homepage() {
                 PLANET CARDS
               </Col>
               <Col xs={12} sm={4} style={{ border: "1px solid yellow" }}>
-                WEATHER WIDGET
+                <Weather objectToShow={cmi} />
               </Col>
             </Row>
           </Col>
