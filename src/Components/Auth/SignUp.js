@@ -3,12 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { signUp } from "../../Store/user/actions";
 
-export default function SignUp() {
-
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { signUp } from "../../Store/user/actions";
-
 export default function SingUp(props) {
   const { handleClose, set_modalForm } = props;
   const dispatch = useDispatch();
@@ -20,7 +14,6 @@ export default function SingUp(props) {
     dispatch(signUp(signUpcredentials));
 
     set_signUpcredentials(initialState);
-
   }
 
   return (
