@@ -1,23 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./PlanetCarousel.css";
 
-export default function PlanetCarousel(props) {
+export default function ControlledCarousel(props) {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
   return (
-    <Carousel>
-      <Carousel.Item>
-        <Link to="/booking">
-          <img
-            className="d-block w-100"
-            src="https://eyes.jpl.nasa.gov/apps/orrery/photos/planets/jupiter.jpg"
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Link>
-      </Carousel.Item>
-    </Carousel>
+    <div className="CarouselContainer">
+      <Carousel activeIndex={index} onSelect={handleSelect}>
+        {props.planetsToShow.map((planet, i) => (
+          <Carousel.Item key={planet.name + planet.id}>
+            <Link to="/booking">
+              <img
+                className="d-block w-100"
+                src={planet.imageUrl}
+                alt={planet.name}
+              />
+              <Carousel.Caption>
+                <h3>{planet.name}</h3>
+                <p>Only {planet.distance} Km away from Earth!</p>
+              </Carousel.Caption>
+            </Link>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
   );
 }
