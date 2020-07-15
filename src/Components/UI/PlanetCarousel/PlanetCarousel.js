@@ -37,7 +37,7 @@ export default function ControlledCarousel(props) {
             <Link to="/booking">
               <img
                 className="d-block w-100"
-                src={PlanetsSvgs[planet.id]}
+                src={PlanetsSvgs[planet.id + 1]}
                 alt={planet.name}
               />
               <Carousel.Caption>

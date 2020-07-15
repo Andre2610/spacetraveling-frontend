@@ -10,7 +10,8 @@ import { getPlanetInfo } from "../../Store/planet/actions";
 import { selectPlanet } from "../../Store/planet/selectors";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
-import Image from "../../Images/banner.svg";
+import ImageRocket from "../../Images/banner.svg";
+import ImageStewardess from "../../Images/stew.svg";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -24,42 +25,23 @@ export default function Homepage() {
   console.log("Correct Data?", planetData);
 
   const cmi = useSelector(selectCoronalMassInjection);
-  const planetDataTest = [
-    {
-      key: 0,
-      id: 0,
-      name: "Test Planet",
-      distance: 1000000,
-      imageUrl:
-        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
-    },
-    {
-      key: 1,
-      id: 1,
-      name: "Test Planet",
-      distance: 1000000,
-      imageUrl:
-        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
-    },
-    {
-      key: 2,
-      id: 2,
-      name: "Test Planet",
-      distance: 1000000,
-      imageUrl:
-        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
-    },
-  ];
+
   return (
     <div>
       <Row className="bannerMod" noGutters={true}>
         <Col xs={12}>
-          <img className="Rocket" src={Image} alt="rocket" />
+          <img className="Rocket" src={ImageRocket} alt="rocket" />
         </Col>
       </Row>
       <Container>
         <Row noGutters={true}>
-          <Col className="d-none d-sm-block" sm={2}></Col>
+          <Col className="d-none d-sm-block align-self-end" sm={2}>
+            <img
+              className="Stewardess"
+              src={ImageStewardess}
+              alt="stewardess"
+            />
+          </Col>
           <Col xs={12} sm={8}>
             <Col xs={12} style={{ padding: "5vh" }}>
               <PlanetForm />
@@ -70,11 +52,11 @@ export default function Homepage() {
             </Col>
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
-                <PlanetCarousel planetsToShow={planetDataTest} />
+                <PlanetCarousel planetsToShow={planetData} />
               </Col>
 
-              <Col xs={12} sm={4} style={{ border: "1px solid yellow" }}>
-                {/* <Weather objectToShow={cmi} /> */}
+              <Col xs={12} sm={4}>
+                <Weather objectToShow={cmi} />
               </Col>
             </Row>
           </Col>
