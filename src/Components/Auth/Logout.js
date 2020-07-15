@@ -1,13 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../Store/user/actions";
-import { Button } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 
-export default function Logout() {
+export default function Logout(props) {
   const dispatch = useDispatch();
   return (
     <>
-      <Button onClick={() => dispatch(logOut())}>Logout</Button>
+      <Typography>Hello, {props.user.firstName} </Typography>
+      <Button color="inherit" onClick={() => dispatch(logOut())}>
+        Logout
+      </Button>
     </>
   );
 }

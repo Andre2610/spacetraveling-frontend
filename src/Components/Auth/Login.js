@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../Store/user/actions";
+import Button from "@material-ui/core/Button";
 
 export default function Login(props) {
   const { handleClose, set_modalForm } = props;
@@ -43,9 +44,14 @@ export default function Login(props) {
             placeholder="Please enter your password"
             required
           />
-          <button type="submit" onClick={submitForm}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={submitForm}
+          >
             Log in
-          </button>
+          </Button>
         </div>
       </form>
       <p>
