@@ -16,7 +16,7 @@ export default function AuthModal() {
   };
   return (
     <Paper>
-      <Button type="button" onClick={handleOpen}>
+      <Button color="inherit" onClick={handleOpen}>
         Login
       </Button>
       <Modal

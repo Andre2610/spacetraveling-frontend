@@ -16,13 +16,10 @@ import ImageStewardess from "../../Images/stew.svg";
 export default function Homepage() {
   const dispatch = useDispatch();
   const planetData = useSelector(selectPlanet);
-
   useEffect(() => {
     dispatch(getCME());
     dispatch(getPlanetInfo());
   }, [dispatch]);
-
-  console.log("Correct Data?", planetData);
 
   const cmi = useSelector(selectCoronalMassInjection);
 
