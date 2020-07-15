@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
-import PlanetForm from "../../Components/UI/PlanetForm";
+import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
 
 export default function Homepage() {
   return (
