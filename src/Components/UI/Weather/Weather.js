@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "../../../Images/cme.gif";
+import "./Weather.css";
 export default function Weather(props) {
   const { startTime, note, sourceLocation, link } = props.objectToShow;
   return (
