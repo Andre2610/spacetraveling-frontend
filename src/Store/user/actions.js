@@ -28,10 +28,18 @@ export const login = (credentials) => {
         credentials,
       });
 
-      dispatch(loginSuccess(res.data));
-      console.log("my response", res.data);
-      // dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
-      // dispatch(appDoneLoading());
+      if (res.data.verified) {
+        dispatch(loginSuccess(res.data));
+        console.log("my response", res.data);
+        const message = `Hello ${res.data.firstName}, welcome to the space travel agency.`;
+        // dispatch(showMessageWithTimeout("success", false, message, 1500));
+        // dispatch(appDoneLoading());
+      } else {
+        console.log("message to verify account");
+        // const message = `Hello, ${res.data.firstName}, please verify your account by clicking the link sent to your email`
+        // dispatch(showMessageWithTimeout("success", false, message, 1500));
+        // dispatch(appDoneLoading());
+      }
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
