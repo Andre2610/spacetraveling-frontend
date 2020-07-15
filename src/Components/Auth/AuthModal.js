@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Container } from "@material-ui/core";
+import { Modal, Button, Paper } from "@material-ui/core";
 import Login from "./Login";
 import Signup from "./SignUp";
 
@@ -15,7 +15,7 @@ export default function AuthModal() {
     setOpen(false);
   };
   return (
-    <Container>
+    <Paper>
       <Button type="button" onClick={handleOpen}>
         Login
       </Button>
@@ -31,6 +31,6 @@ export default function AuthModal() {
           <Signup handleClose={handleClose} set_modalForm={set_modalForm} />
         )}
       </Modal>
-    </Container>
+    </Paper>
   );
 }
