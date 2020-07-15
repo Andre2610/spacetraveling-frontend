@@ -22,7 +22,32 @@ export default function Homepage() {
   console.log("Correct Data?", planetData);
 
   const cmi = useSelector(selectCoronalMassInjection);
-
+  const planetDataTest = [
+    {
+      key: 0,
+      id: 0,
+      name: "Test Planet",
+      distance: 1000000,
+      imageUrl:
+        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
+    },
+    {
+      key: 1,
+      id: 1,
+      name: "Test Planet",
+      distance: 1000000,
+      imageUrl:
+        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
+    },
+    {
+      key: 2,
+      id: 2,
+      name: "Test Planet",
+      distance: 1000000,
+      imageUrl:
+        "https://www.popsci.com/resizer/WsYKweCWKvQec1WYoOSuYxWXyC0=/525x525/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/LP5TMWXTF6VV6VQ6YDQGZ3YLQQ.jpg",
+    },
+  ];
   return (
     <div>
       <Jumbotron fluid>
@@ -34,17 +59,16 @@ export default function Homepage() {
       <Container>
         <Row noGutters={true}>
           <Col
-            className='d-none d-sm-block'
+            className="d-none d-sm-block"
             sm={2}
-            style={{ border: "1px solid red" }}
-          ></Col>
+            style={{ border: "1px solid red" }}></Col>
           <Col xs={12} sm={8} style={{ border: "1px solid red" }}>
             <Col xs={12} style={{ border: "1px solid red" }}>
               <PlanetForm />
             </Col>
             <Row noGutters={true}>
               <Col xs={12} sm={8} style={{ border: "1px solid green" }}>
-                <PlanetCarousel />
+                <PlanetCarousel planetsToShow={planetDataTest} />
               </Col>
               <Col xs={12} sm={4} style={{ border: "1px solid yellow" }}>
                 <Weather objectToShow={cmi} />
@@ -52,10 +76,9 @@ export default function Homepage() {
             </Row>
           </Col>
           <Col
-            className='d-none d-sm-block'
+            className="d-none d-sm-block"
             sm={2}
-            style={{ border: "1px solid red" }}
-          ></Col>
+            style={{ border: "1px solid red" }}></Col>
         </Row>
       </Container>
     </div>
