@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Jumbotron, Row, Col, Button } from "react-bootstrap";
 import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
-import Weather from "../../Components/UI/Weather/Weather";
+// import Weather from "../../Components/UI/Weather/Weather";
 import PlanetCarousel from "../../Components/UI/PlanetCarousel/PlanetCarousel";
 import Image from "../../Images/banner.jpeg";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,7 +67,7 @@ export default function Homepage() {
             <Col xs={12} style={{ border: "1px solid red" }}>
               <PlanetForm />
 
-              <Link to='/booking'>
+              <Link to="/booking">
                 <Button>Book here</Button>
               </Link>
             </Col>
@@ -76,7 +76,7 @@ export default function Homepage() {
                 <PlanetCarousel planetsToShow={planetDataTest} />
               </Col>
               <Col xs={12} sm={4} style={{ border: "1px solid yellow" }}>
-                <Weather objectToShow={cmi} />
+                {/* <Weather objectToShow={cmi} /> */}
               </Col>
             </Row>
           </Col>
