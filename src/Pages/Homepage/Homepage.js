@@ -6,12 +6,14 @@ import Image from "../../Images/banner.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCoronalMassInjection } from "../../Store/weather/CoronalMassInjection/selectors";
 import { getCME } from "../../Store/weather/CoronalMassInjection/actions";
+import { getPlanetInfo } from "../../Store/planet/actions";
 
 export default function Homepage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCME());
+    dispatch(getPlanetInfo());
   }, [dispatch]);
 
   const cmi = useSelector(selectCoronalMassInjection);
@@ -27,9 +29,10 @@ export default function Homepage() {
       <Container>
         <Row noGutters={true}>
           <Col
-            className="d-none d-sm-block"
+            className='d-none d-sm-block'
             sm={2}
-            style={{ border: "1px solid red" }}></Col>
+            style={{ border: "1px solid red" }}
+          ></Col>
           <Col xs={12} sm={8} style={{ border: "1px solid red" }}>
             <Col xs={12} style={{ border: "1px solid red" }}>
               <PlanetForm />
@@ -44,9 +47,10 @@ export default function Homepage() {
             </Row>
           </Col>
           <Col
-            className="d-none d-sm-block"
+            className='d-none d-sm-block'
             sm={2}
-            style={{ border: "1px solid red" }}></Col>
+            style={{ border: "1px solid red" }}
+          ></Col>
         </Row>
       </Container>
     </div>
