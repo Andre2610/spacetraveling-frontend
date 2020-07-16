@@ -24,7 +24,6 @@ import {
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import { Link } from "react-router-dom";
 import FormDialog from "../FormDialog/FormDialog";
-import PaymentForm from "../payment/PaymentForm";
 
 //stripe
 import { Elements } from "@stripe/react-stripe-js";
