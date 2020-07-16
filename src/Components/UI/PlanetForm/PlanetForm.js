@@ -10,9 +10,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   btn: {
-    width: "100%",
-    paddingTop: "2vh",
-    justifySelf: "right",
+    marginTop: "1vh",
+    float: "right",
   },
 }));
 
@@ -31,13 +30,13 @@ export default function PlanetForm() {
               <option>Choose...</option>
               {/* Planet.map() */}
             </Form.Control>
+
             <Button
-              className={classes.Btn}
+              className={classes.btn}
               component={Link}
               to="/booking"
               color="primary"
-              variant="contained"
-            >
+              variant="contained">
               Book here
             </Button>
           </Form.Group>
