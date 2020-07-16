@@ -31,7 +31,7 @@ export default function Booking() {
           </Col>
           <Col xs={12} sm={8}>
             <Col xs={12}>
-              <PlanetForm planetData={planetData} />
+              <PlanetForm planetData={planetData} show={false} />
             </Col>
             <Row noGutters={true}>
               <Col xs={12}>{trips[0] ? <Triplist trips={trips} /> : null}</Col>

@@ -38,6 +38,11 @@ function App() {
       selectMenu: { light: "#FF6F00", main: "#546E7A", dark: "#FFD54F" },
       type: "dark",
       background: { paper: "#212121" },
+      breakpoint: {
+        values: {
+          xxl: "100vw",
+        },
+      },
     },
   });
 
@@ -57,6 +62,11 @@ function App() {
       selectMenu: { light: "#FF6F00", main: "#EEEEEE", dark: "#FFD54F" },
       type: "light",
     },
+    breakpoint: {
+      values: {
+        xxl: "100vw",
+      },
+    },
   });
   console.log("my theme", darkTheme);
   useEffect(() => {
@@ -65,7 +75,7 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Paper>
-        <Container disableGutters={true} maxWidth="xl">
+        <Container disableGutters={true} maxWidth="xxl">
           <CssBaseline />
           <Navbar darkMode={darkMode} set_darkMode={set_darkMode} />
           <Switch>
