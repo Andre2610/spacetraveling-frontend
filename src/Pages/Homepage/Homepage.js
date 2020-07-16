@@ -13,6 +13,8 @@ import "./Homepage.css";
 import ImageRocket from "../../Images/banner.svg";
 import ImageStewardess from "../../Images/stew.svg";
 import ImageRover from "../../Images/rover.svg";
+import ImageAcc from "../../Images/accomodation.svg";
+import ImageRent from "../../Images/rentarover.svg";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -41,12 +43,27 @@ export default function Homepage() {
             />
           </Col>
           <Col xs={12} sm={8}>
-            <Col xs={12}>
-              <PlanetForm />
-            </Col>
+            <PlanetForm />
+
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
                 <PlanetCarousel planetsToShow={planetData} />
+                <Row noGutters={true}>
+                  <Col xs={6}>
+                    <img
+                      className="Rentarover"
+                      src={ImageRent}
+                      alt="rentarover"
+                    />
+                  </Col>
+                  <Col xs={6}>
+                    <img
+                      className="Accomodation"
+                      src={ImageAcc}
+                      alt="Accomodation"
+                    />
+                  </Col>
+                </Row>
               </Col>
 
               <Col xs={12} sm={4}>
