@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTripsList } from "../../Store/trips/actions";
+import { getPlanetInfo } from "../../Store/planet/actions";
 import { selectTrips } from "../../Store/trips/selectors";
+import { selectPlanet } from "../../Store/planet/selectors";
 import { Container, Row, Col } from "react-bootstrap";
 import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
 import Triplist from "../../Components/Triplist/Triplist";
@@ -11,11 +13,15 @@ import "./Booking.css";
 
 export default function Booking() {
   const dispatch = useDispatch();
+  const planetData = useSelector(selectPlanet);
   const trips = useSelector(selectTrips);
 
   useEffect(() => {
-    dispatch(getTripsList());
+    if (!trips[0]) dispatch(getTripsList());
+    if (!planetData[0]) dispatch(getPlanetInfo());
   }, [dispatch]);
+
+  console.log("is it true", planetData[0]);
   return (
     <div>
       <Container>
