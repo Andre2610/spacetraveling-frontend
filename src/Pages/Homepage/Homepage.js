@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import "./Homepage.css";
 import ImageRocket from "../../Images/banner.svg";
 import ImageStewardess from "../../Images/stew.svg";
+import ImageRover from "../../Images/rover.svg";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -53,7 +54,9 @@ export default function Homepage() {
               </Col>
             </Row>
           </Col>
-          <Col className="d-none d-sm-block" sm={2}></Col>
+          <Col className="d-none d-sm-block align-self-end" sm={2}>
+            <img className="Rover" src={ImageRover} alt="rover" />
+          </Col>
         </Row>
       </Container>
     </div>
