@@ -21,27 +21,24 @@ import { URL } from "../../Config/constants";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: 0,
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
   },
-  dialogFooter: {
-    fontSize: "0.8rem",
-    width: "100%",
-    textAlign: "center",
+  dialogTextArea: {
+    marginBottom: "0.7rem",
   },
 }));
 
 export default function FormDialog(props) {
   const classes = useStyles();
   const { tripData } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [cardholder, setCardholder] = useState("");
 
-  let tripId = tripData.id;
-  let departingDate = tripData.departingDate;
-  let planetId = tripData.planetId;
-  let amount = tripData.price * 100;
+  const tripId = tripData.id;
+  const departingDate = tripData.departingDate;
+  const planetId = tripData.planetId;
+  const amount = tripData.price * 100;
 
   //stripe
   const stripe = useStripe();
@@ -50,11 +47,6 @@ export default function FormDialog(props) {
   //stripe form & call
   const submithandler = async (event) => {
     event.preventDefault();
-
-    console.log("Amount", amount);
-    console.log("Email", email);
-    console.log("cardholder", cardholder);
-    console.log("tripID", tripId);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -90,44 +82,36 @@ export default function FormDialog(props) {
         Book your trip!
       </Button>
       <Dialog
+        className={classes.root}
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Pay with card</DialogTitle>
-        <DialogContent>
+        <DialogContent className={classes.root}>
           <TextField
             autoFocus
-            margin="dense"
-            id="name"
+            className={classes.dialogTextArea}
+            id="email"
             label="Email address"
             type="email"
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <DialogContentText>Card information</DialogContentText>
-          <CardElement />
-          <TextField label="Name on card" fullWidth />
           <TextField
-            id="cardholderName"
-            label="Card information"
+            className={classes.dialogTextArea}
+            id="name"
+            type="text"
+            label="Name on card"
             fullWidth
             value={cardholder}
             onChange={(e) => setCardholder(e.target.value)}
           />
-          <DialogContentText>Country or region</DialogContentText>
-          <NativeSelect id="select">
-            <option value="netherlands">Netherlands</option>
-            <option value="france"> France</option>
-            <option value="Germany">Germany</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Spain">Spain</option>
-            <option value="Italy">Italy</option>
-            <option value="Romania">Romania</option>
-            <option value="Russia">Russia</option>
-            <option value="USA">USA</option>
-          </NativeSelect>
+          <DialogContentText className={classes.dialogTextArea}>
+            Card information
+          </DialogContentText>
+          <CardElement className={classes.dialogTextArea} />
         </DialogContent>
         <DialogActions>
           <Button variant="contained" onClick={handleClose} color="primary">
