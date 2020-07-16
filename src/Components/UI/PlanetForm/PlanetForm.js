@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "2vh 0",
-    padding: "1.5vh 3vw 0.5vh 3vw",
+    padding: "1.5vh 5vw 0.5vh 5vw",
     backgroundColor: theme.palette.selectBackground.main,
     borderRadius: "1vw",
   },
@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   btn: {
-    width: "10vw",
     marginTop: "1vh",
     float: "right",
     alignSelf: "right",
@@ -47,6 +46,21 @@ export default function PlanetForm(props) {
   function handleChange(e) {
     set_selectedPlanet(e.target.value);
   }
+
+  const showButton = props.show ? (
+    <Box className={classes.btnBox}>
+      <Button
+        className={classes.btn}
+        component={Link}
+        to="/booking"
+        color="primary"
+        variant="contained">
+        Book here
+      </Button>
+    </Box>
+  ) : (
+    <Box></Box>
+  );
 
   return (
     <Box className={classes.root}>
@@ -76,16 +90,7 @@ export default function PlanetForm(props) {
             );
           })}
         </Select>
-        <Box className={classes.btnBox}>
-          <Button
-            className={classes.btn}
-            component={Link}
-            to="/booking"
-            color="primary"
-            variant="contained">
-            Book here
-          </Button>
-        </Box>
+        {showButton}
       </FormControl>
     </Box>
   );

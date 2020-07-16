@@ -45,9 +45,9 @@ export default function SingUp(props) {
             firstName: event.target.value,
           })
         }
-        type="text"
+        type='text'
         autoFocus
-        label="First name"
+        label='First name'
         fullWidth
         required
       />
@@ -59,8 +59,8 @@ export default function SingUp(props) {
             lastName: event.target.value,
           })
         }
-        type="text"
-        label="Last name"
+        type='text'
+        label='Last name'
         fullWidth
         required
       />
@@ -72,8 +72,8 @@ export default function SingUp(props) {
             email: event.target.value,
           })
         }
-        type="email"
-        label="Email address"
+        type='email'
+        label='Email address'
         fullWidth
         required
       />
@@ -85,23 +85,23 @@ export default function SingUp(props) {
             password: event.target.value,
           })
         }
-        type="password"
-        label="Password"
+        type='password'
+        label='Password'
         fullWidth
         required
       />
       <DialogActions>
-        <Button variant="contained" color="primary" onClick={submitForm}>
+        <Button variant='contained' color='primary' onClick={submitForm}>
           Log in
         </Button>
       </DialogActions>
       <DialogContentText className={classes.dialogFooter}>
-        Don't have an account yet? Sign up{" "}
+        Already have an account? Login{" "}
         <Typography
-          component="span"
+          component='span'
           onClick={(e) => set_modalForm("Login")}
           style={{ cursor: "pointer" }}
-          color="blue.500"
+          color='blue.500'
         >
           HERE
         </Typography>

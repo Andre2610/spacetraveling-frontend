@@ -44,7 +44,7 @@ export default function Homepage() {
             />
           </Col>
           <Col xs={12} sm={8}>
-            <PlanetForm planetData={planetData} />
+            <PlanetForm planetData={planetData} show={true} />
 
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
