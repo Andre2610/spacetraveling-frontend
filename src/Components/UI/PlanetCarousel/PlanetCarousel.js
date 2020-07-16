@@ -42,7 +42,7 @@ export default function ControlledCarousel(props) {
               />
               <Carousel.Caption className="CaptionContainer">
                 <h3>{planet.name}</h3>
-                <p>Only {planet.distance} Km away from Earth!</p>
+                <p>{planet.description}</p>
               </Carousel.Caption>
             </Link>
           </Carousel.Item>
