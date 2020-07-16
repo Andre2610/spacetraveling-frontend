@@ -14,7 +14,6 @@ export function getPlanetInfo() {
   return async (dispatch, getState) => {
     try {
       const res = await Axios.get(`${URL}/planet`);
-      console.log("What my info", res.data);
       dispatch(planetFetchSuccess(res.data));
     } catch (e) {
       console.log(e);

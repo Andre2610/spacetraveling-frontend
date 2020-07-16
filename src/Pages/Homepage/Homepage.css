@@ -1,8 +1,14 @@
 .bannerMod {
   background-image: url("../../Images/bannerbg.svg");
   background-position: center;
+  text-align: center;
 }
 
-.Stewardess {
-  padding-bottom: 5vh;
+.Rocket {
+  max-width: 70vw;
+}
+
+.Stewardess,
+.Rover {
+  padding-bottom: 1vh;
 }

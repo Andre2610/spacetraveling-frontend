@@ -1,0 +1,20 @@
+.FormContainer {
+  margin: 2vh 0;
+  padding: 1.5vh 3vw 0.5vh 3vw;
+  background-color: #ffbd11;
+  border-radius: 1vw;
+}
+
+.LinkContainer {
+  padding-top: 1vh;
+  float: right;
+}
+
+.LabelContainer {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 2em;
+}

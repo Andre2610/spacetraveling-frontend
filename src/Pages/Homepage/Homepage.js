@@ -12,17 +12,15 @@ import { Link } from "react-router-dom";
 import "./Homepage.css";
 import ImageRocket from "../../Images/banner.svg";
 import ImageStewardess from "../../Images/stew.svg";
+import ImageRover from "../../Images/rover.svg";
 
 export default function Homepage() {
   const dispatch = useDispatch();
   const planetData = useSelector(selectPlanet);
-
   useEffect(() => {
     dispatch(getCME());
     dispatch(getPlanetInfo());
   }, [dispatch]);
-
-  console.log("Correct Data?", planetData);
 
   const cmi = useSelector(selectCoronalMassInjection);
 
@@ -43,12 +41,8 @@ export default function Homepage() {
             />
           </Col>
           <Col xs={12} sm={8}>
-            <Col xs={12} style={{ padding: "5vh" }}>
+            <Col xs={12}>
               <PlanetForm />
-
-              <Link to="/booking">
-                <Button>Book here</Button>
-              </Link>
             </Col>
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
@@ -60,7 +54,9 @@ export default function Homepage() {
               </Col>
             </Row>
           </Col>
-          <Col className="d-none d-sm-block" sm={2}></Col>
+          <Col className="d-none d-sm-block align-self-end" sm={2}>
+            <img className="Rover" src={ImageRover} alt="rover" />
+          </Col>
         </Row>
       </Container>
     </div>
