@@ -4,6 +4,7 @@ import { signUp } from "../../Store/user/actions";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -94,7 +95,7 @@ export default function SingUp(props) {
           Log in
         </Button>
       </DialogActions>
-      <Typography className={classes.dialogFooter}>
+      <DialogContentText className={classes.dialogFooter}>
         Don't have an account yet? Sign up{" "}
         <Typography
           component="span"
@@ -104,7 +105,7 @@ export default function SingUp(props) {
         >
           HERE
         </Typography>
-      </Typography>
+      </DialogContentText>
     </DialogContent>
   );
 }
