@@ -8,6 +8,7 @@ import Booking from "./Pages/Booking/Booking";
 import CoronalMassInjection from "./Components/APIs/SpaceWeather/CoronalMassInjection";
 import SolarFlares from "./Components/APIs/SpaceWeather/SolarFlares";
 import Payment from "./Pages/Stripe/Payment";
+import PaymentForm from "./Components/payment/PaymentForm";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
       <Switch>
         <Route exact path='/' component={Homepage} />
         <Route exact path='/booking' component={Booking} />
-        <Route exact path='/booking/checkout' component={Payment} />
+        <Route exact path='/booking/checkout' component={PaymentForm} />
+        <h2>TESTING ELE BELOW</h2>
+        <PaymentForm />
       </Switch>
       <div className='Footer'></div>
       <Footer />
