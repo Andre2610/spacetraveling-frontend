@@ -3,7 +3,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken } from "./Store/user/actions";
-import Yellow from "@material-ui/core/colors";
+import Message from "./Components/appState/Message";
 import Navbar from "./Components/UI/Navigation/Navbar";
 import Footer from "./Components/Footer/Footer";
 import Homepage from "./Pages/Homepage/Homepage";
@@ -68,6 +68,7 @@ function App() {
         <Container disableGutters={true} maxWidth="xl">
           <CssBaseline />
           <Navbar darkMode={darkMode} set_darkMode={set_darkMode} />
+          <Message />
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route exact path="/booking" component={Booking} />
