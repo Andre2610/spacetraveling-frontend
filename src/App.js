@@ -47,6 +47,9 @@ function App() {
         },
       },
     },
+    props: {
+      MuiTextField: { variant: "outlined", InputLabelProps: { shrink: true } },
+    },
   });
 
   const lightTheme = createMuiTheme({
@@ -68,6 +71,12 @@ function App() {
     breakpoint: {
       values: {
         xxl: "100vw",
+      },
+    },
+    props: {
+      MuiTextField: {
+        variant: "outlined",
+        margin: "normal",
       },
     },
   });
