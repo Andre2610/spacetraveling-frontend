@@ -52,7 +52,7 @@ function App() {
       type: "light",
     },
   });
-
+  console.log("my theme", darkTheme);
   useEffect(() => {
     dispatch(getUserWithStoredToken());
   }, [darkMode]);

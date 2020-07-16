@@ -1,10 +1,24 @@
 import React from "react";
 import { Form, Col } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./PlanetForm.css";
 
-export default function Homepage() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  btn: {
+    width: "100%",
+    paddingTop: "2vh",
+    justifySelf: "right",
+  },
+}));
+
+export default function PlanetForm() {
+  const classes = useStyles();
+
   return (
     <div className="FormContainer">
       <Form>
@@ -17,11 +31,15 @@ export default function Homepage() {
               <option>Choose...</option>
               {/* Planet.map() */}
             </Form.Control>
-            <Link className="LinkContainer" to="/booking">
-              <Button color="primary" variant="contained">
-                Book here
-              </Button>
-            </Link>
+            <Button
+              className={classes.Btn}
+              component={Link}
+              to="/booking"
+              color="primary"
+              variant="contained"
+            >
+              Book here
+            </Button>
           </Form.Group>
         </Form.Row>
       </Form>
