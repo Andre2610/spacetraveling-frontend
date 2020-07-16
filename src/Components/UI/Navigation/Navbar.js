@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  darkButton: {
+    marginLeft: "2vw",
+  },
 }));
 
 export default function ButtonAppBar(props) {
@@ -78,10 +81,12 @@ export default function ButtonAppBar(props) {
                 aria-label="menu">
                 <SvgIcon component={LogoIcon} viewBox="0 0 96 96" />
               </IconButton>
-              {darkModeButton()}
             </Box>
             <Box display="flex" alignItems="center" justifyContent="flex-end">
-              {user.token ? <Logout user={user} /> : <AuthModal />}
+              {darkModeButton()}
+              <Box className={classes.darkButton}>
+                {user.token ? <Logout user={user} /> : <AuthModal />}
+              </Box>
             </Box>
           </Box>
         </Toolbar>
