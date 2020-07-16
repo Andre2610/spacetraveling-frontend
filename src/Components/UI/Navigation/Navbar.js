@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginLeft: theme.spacing(3),
   },
   title: {
     flexGrow: 1,
@@ -43,7 +43,8 @@ export default function ButtonAppBar(props) {
           className={classes.menuButton}
           edge="start"
           color="inherit"
-          aria-label="menu">
+          aria-label="menu"
+        >
           <Brightness7 fontSize="large" />
         </IconButton>
       );
@@ -54,7 +55,8 @@ export default function ButtonAppBar(props) {
           className={classes.menuButton}
           edge="start"
           color="inherit"
-          aria-label="menu">
+          aria-label="menu"
+        >
           <Brightness2 fontSize="large" />
         </IconButton>
       );
@@ -70,7 +72,8 @@ export default function ButtonAppBar(props) {
             alignItems="center"
             justifyContent="space-between"
             width="100%"
-            marginX={4}>
+            marginX={4}
+          >
             <Box>
               <IconButton
                 component={Link}
@@ -78,15 +81,14 @@ export default function ButtonAppBar(props) {
                 className={classes.menuButton}
                 edge="start"
                 color="inherit"
-                aria-label="menu">
+                aria-label="menu"
+              >
                 <SvgIcon component={LogoIcon} viewBox="0 0 96 96" />
               </IconButton>
             </Box>
             <Box display="flex" alignItems="center" justifyContent="flex-end">
+              {user.token ? <Logout user={user} /> : <AuthModal />}
               {darkModeButton()}
-              <Box className={classes.darkButton}>
-                {user.token ? <Logout user={user} /> : <AuthModal />}
-              </Box>
             </Box>
           </Box>
         </Toolbar>
