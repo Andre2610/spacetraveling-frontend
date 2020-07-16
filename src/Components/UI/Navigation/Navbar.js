@@ -13,8 +13,8 @@ import Brightness7 from "@material-ui/icons/Brightness7";
 import AuthModal from "../../Auth/AuthModal";
 import Logout from "../../Auth/Logout";
 import { selectUser } from "../../../Store/user/selectors";
-import LogoIcon from "../../../Images/logoicon.svg";
-import LogoImg from "../../../Images/logo.svg";
+import { ReactComponent as LogoIcon } from "../../../Images/logoicon.svg";
+import SvgIcon from "@material-ui/core/SvgIcon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,8 +40,7 @@ export default function ButtonAppBar(props) {
           className={classes.menuButton}
           edge="start"
           color="inherit"
-          aria-label="menu"
-        >
+          aria-label="menu">
           <Brightness7 fontSize="large" />
         </IconButton>
       );
@@ -52,8 +51,7 @@ export default function ButtonAppBar(props) {
           className={classes.menuButton}
           edge="start"
           color="inherit"
-          aria-label="menu"
-        >
+          aria-label="menu">
           <Brightness2 fontSize="large" />
         </IconButton>
       );
@@ -69,8 +67,7 @@ export default function ButtonAppBar(props) {
             alignItems="center"
             justifyContent="space-between"
             width="100%"
-            marginX={4}
-          >
+            marginX={4}>
             <Box>
               <IconButton
                 component={Link}
@@ -78,9 +75,9 @@ export default function ButtonAppBar(props) {
                 className={classes.menuButton}
                 edge="start"
                 color="inherit"
-                aria-label="menu"
-              >
-                <FlightTakeoffIcon fontSize="large" />
+                aria-label="menu">
+                {/* <FlightTakeoffIcon fontSize="large" /> */}
+                <SvgIcon component={LogoIcon} viewBox="0 0 96 96" />
               </IconButton>
               {darkModeButton()}
             </Box>

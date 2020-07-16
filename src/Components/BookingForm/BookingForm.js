@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormDialog(props) {
   const classes = useStyles();
-  const { tripData } = props;
+  const { tripData, userData } = props;
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [cardholder, setCardholder] = useState("");
@@ -39,6 +39,7 @@ export default function FormDialog(props) {
   const departingDate = tripData.departingDate;
   const planetId = tripData.planetId;
   const amount = tripData.price * 100;
+  const userId = userData.id;
 
   //stripe
   const stripe = useStripe();
@@ -63,6 +64,7 @@ export default function FormDialog(props) {
         planetId,
         email,
         cardholder,
+        userId,
       });
       return data;
     }
@@ -78,32 +80,32 @@ export default function FormDialog(props) {
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant='contained' color='primary' onClick={handleClickOpen}>
         Book your trip!
       </Button>
       <Dialog
         className={classes.root}
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title"
+        aria-labelledby='form-dialog-title'
       >
-        <DialogTitle id="form-dialog-title">Pay with card</DialogTitle>
+        <DialogTitle id='form-dialog-title'>Pay with card</DialogTitle>
         <DialogContent className={classes.root}>
           <TextField
             autoFocus
             className={classes.dialogTextArea}
-            id="email"
-            label="Email address"
-            type="email"
+            id='email'
+            label='Email address'
+            type='email'
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             className={classes.dialogTextArea}
-            id="name"
-            type="text"
-            label="Name on card"
+            id='name'
+            type='text'
+            label='Name on card'
             fullWidth
             value={cardholder}
             onChange={(e) => setCardholder(e.target.value)}
@@ -114,13 +116,13 @@ export default function FormDialog(props) {
           <CardElement className={classes.dialogTextArea} />
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={handleClose} color="primary">
+          <Button variant='contained' onClick={handleClose} color='primary'>
             Cancel
           </Button>
           <Button
-            variant="contained"
+            variant='contained'
             onClick={handleClose}
-            color="primary"
+            color='primary'
             onClick={submithandler}
           >
             Buy ticket
