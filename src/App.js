@@ -7,7 +7,6 @@ import Homepage from "./Pages/Homepage/Homepage";
 import Booking from "./Pages/Booking/Booking";
 import CoronalMassInjection from "./Components/APIs/SpaceWeather/CoronalMassInjection";
 import SolarFlares from "./Components/APIs/SpaceWeather/SolarFlares";
-import Payment from "./Pages/Stripe/Payment";
 import PaymentForm from "./Components/payment/PaymentForm";
 
 function App() {

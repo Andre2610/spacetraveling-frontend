@@ -8,13 +8,18 @@ import {
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { Payment } from "../../Store/stripe/actions";
+import { URL } from "../../Config/constants";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
+  const dispatch = useDispatch();
 
   const submithandler = async (event) => {
     event.preventDefault();
+    const amount = 20000;
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -22,7 +27,9 @@ export default function CheckoutForm() {
     });
 
     if (!error) {
-      console.log("paymentMethod", paymentMethod);
+      const { id } = paymentMethod;
+      const data = axios.post(`${URL}/checkout`, { id, amount });
+      return data;
     }
   };
 
