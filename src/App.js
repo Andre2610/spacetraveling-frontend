@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { selectAppLoading } from "./Store/appState/selector";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserWithStoredToken } from "./Store/user/actions";
 import Message from "./Components/appState/Message";
+import Loading from "./Components/appState/Loading";
 import Navbar from "./Components/UI/Navigation/Navbar";
 import Footer from "./Components/Footer/Footer";
 import Homepage from "./Pages/Homepage/Homepage";
@@ -20,6 +22,7 @@ import SolarFlares from "./Components/APIs/SpaceWeather/SolarFlares";
 
 function App() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectAppLoading);
   const [darkMode, set_darkMode] = useState(false);
 
   const darkTheme = createMuiTheme({
@@ -59,6 +62,7 @@ function App() {
     },
   });
   console.log("my theme", darkTheme);
+
   useEffect(() => {
     dispatch(getUserWithStoredToken());
   }, [darkMode]);
@@ -69,6 +73,7 @@ function App() {
           <CssBaseline />
           <Navbar darkMode={darkMode} set_darkMode={set_darkMode} />
           <Message />
+          {isLoading ? <Loading open={isLoading} /> : null}
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route exact path="/booking" component={Booking} />

@@ -1,7 +1,11 @@
 import axios from "axios";
 import { URL } from "../../Config/constants";
 import { selectToken } from "./selectors";
-import { showMessageWithTimeout } from "../appState/actions";
+import {
+  showMessageWithTimeout,
+  appDoneLoading,
+  appLoading,
+} from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
@@ -23,7 +27,7 @@ export const logOut = () => ({ type: LOG_OUT });
 
 export const login = (credentials) => {
   return async (dispatch, getState) => {
-    //   dispatch(appLoading());
+    dispatch(appLoading());
     try {
       const res = await axios.post(`${URL}/auth/login`, {
         credentials,
@@ -33,12 +37,12 @@ export const login = (credentials) => {
         dispatch(loginSuccess(res.data));
         const message = `Hello ${res.data.firstName}, welcome to the space travel agency.`;
         dispatch(showMessageWithTimeout("success", false, message, 1500));
-        // dispatch(appDoneLoading());
+        dispatch(appDoneLoading());
       } else {
         console.log("message to verify account");
         const message = `Hello, ${res.data.firstName}, please verify your account by clicking the link sent to your email`;
         dispatch(showMessageWithTimeout("info", false, message, 4000));
-        // dispatch(appDoneLoading());
+        dispatch(appDoneLoading());
       }
     } catch (error) {
       if (error.response) {
@@ -55,7 +59,7 @@ export const login = (credentials) => {
         console.log(error.message);
         dispatch(showMessageWithTimeout("error", true, error.message, 4000));
       }
-      // dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     }
   };
 };
@@ -65,13 +69,13 @@ export const getUserWithStoredToken = () => {
     const token = selectToken(getState());
     if (token === null) return;
 
-    // dispatch(appLoading());
+    dispatch(appLoading());
     try {
       const response = await axios.get(`${URL}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(tokenStillValid(response.data));
-      //   dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
@@ -79,14 +83,14 @@ export const getUserWithStoredToken = () => {
         console.log(error);
       }
       dispatch(logOut());
-      //   dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     }
   };
 };
 
 export const signUp = (signUpcredentials) => {
   return async (dispatch, getState) => {
-    // dispatch(appLoading());
+    dispatch(appLoading());
     try {
       console.log("my signupCredentials", signUpcredentials);
       const res = await axios.post(`${URL}/auth/signup`, {
@@ -96,7 +100,7 @@ export const signUp = (signUpcredentials) => {
       dispatch(loginSuccess(res.data));
       const message = `Welcome to Duct Tape inc ${res.data.firstName}, please make sure to verify your account before logging in.`;
       dispatch(showMessageWithTimeout("success", true, message, 4000));
-      //   dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -112,7 +116,7 @@ export const signUp = (signUpcredentials) => {
         console.log(error.message);
         dispatch(showMessageWithTimeout("error", true, error.message, 4000));
       }
-      //   dispatch(appDoneLoading());
+      dispatch(appDoneLoading());
     }
   };
 };
