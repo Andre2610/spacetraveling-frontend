@@ -11,7 +11,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import Image from "../../../Images/cme.gif";
-import "./Weather.css";
 
 const useStyles = makeStyles({
   media: {
@@ -22,7 +21,6 @@ const useStyles = makeStyles({
 export default function Weather(props) {
   const { startTime, note, sourceLocation, link } = props.objectToShow;
   const classes = useStyles();
-
   return (
     <div className="WeatherContainer">
       <Card className={classes.root}>
