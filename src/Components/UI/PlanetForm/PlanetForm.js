@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "2vh 0",
-    padding: "1.5vh 3vw 0.5vh 3vw",
+    padding: "1.5vh 5vw 0.5vh 5vw",
     backgroundColor: theme.palette.selectBackground.main,
     borderRadius: "1vw",
   },
@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   btn: {
-    width: "15vw",
     marginTop: "1vh",
     float: "right",
     alignSelf: "right",

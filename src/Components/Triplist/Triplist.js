@@ -380,7 +380,13 @@ export default function EnhancedTable(props) {
         )}
       </Paper>
       <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
+        control={
+          <Switch
+            color="primary"
+            checked={dense}
+            onChange={handleChangeDense}
+          />
+        }
         label="Dense padding"
       />
     </div>
