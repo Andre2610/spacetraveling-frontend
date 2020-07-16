@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.selectBackground.main,
     borderRadius: "1vw",
   },
+  btnBox: {
+    width: "100%",
+  },
   btn: {
     width: "10vw",
     marginTop: "1vh",
@@ -75,15 +78,17 @@ export default function PlanetForm(props) {
             );
           })}
         </Select>
-        <Button
-          className={classes.btn}
-          component={Link}
-          to="/booking"
-          color="primary"
-          variant="contained"
-        >
-          Book here
-        </Button>
+        <Box className={classes.btnBox}>
+          <Button
+            className={classes.btn}
+            component={Link}
+            to="/booking"
+            color="primary"
+            variant="contained"
+          >
+            Book here
+          </Button>
+        </Box>
       </FormControl>
     </Box>
   );
