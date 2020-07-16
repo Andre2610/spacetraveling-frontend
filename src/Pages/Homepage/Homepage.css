@@ -1,6 +1,11 @@
 .bannerMod {
   background-image: url("../../Images/bannerbg.svg");
   background-position: center;
+  text-align: center;
+}
+
+.Rocket {
+  max-width: 70vw;
 }
 
 .Stewardess {
