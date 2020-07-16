@@ -70,7 +70,7 @@ const headCells = [
   {
     id: "name",
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: "Departure Date",
   },
   {
@@ -102,7 +102,7 @@ function EnhancedTableHead(props) {
 
   return (
     <TableHead>
-      <TableRow>
+      <TableRow className={classes.tablehead}>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -110,6 +110,7 @@ function EnhancedTableHead(props) {
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}>
             <TableSortLabel
+              className={classes.tableheadtext}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}>
@@ -197,9 +198,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginBottom: theme.spacing(2),
   },
-  table: {
-    minWidth: 750,
-  },
   visuallyHidden: {
     border: 0,
     clip: "rect(0 0 0 0)",
@@ -216,6 +214,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#aa0d00",
     marginTop: "1vh",
     float: "right",
+  },
+  tablehead: {
+    backgroundColor: "#aa0d00",
+  },
+  tableheadtext: {
+    color: "#ffffff",
+    textAlign: "bold",
+    "&:hover": {
+      color: "#ffa000",
+    },
   },
 }));
 
