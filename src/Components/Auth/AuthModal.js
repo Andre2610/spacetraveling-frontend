@@ -12,6 +12,11 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: theme.spacing(2),
   },
+  btn: {
+    fontWeight: "bold",
+    color: "#aa0d00",
+    backgroundColor: "#ffffff",
+  },
 }));
 
 export default function AuthModal() {
@@ -36,7 +41,7 @@ export default function AuthModal() {
     );
   return (
     <Paper>
-      <Button color="inherit" onClick={handleOpen}>
+      <Button className={classes.btn} onClick={handleOpen}>
         Login
       </Button>
       <Dialog
@@ -44,8 +49,7 @@ export default function AuthModal() {
         open={open}
         onClose={handleClose}
         aria-labelledby="auth-modal-login-signup"
-        aria-describedby="auth-modal-login-signup"
-      >
+        aria-describedby="auth-modal-login-signup">
         <DialogTitle id="form-dialog-title">{title}</DialogTitle>
         {formToDisplay}
       </Dialog>

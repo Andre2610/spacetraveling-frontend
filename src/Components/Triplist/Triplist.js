@@ -108,13 +108,11 @@ function EnhancedTableHead(props) {
             key={headCell.id}
             align="center"
             padding={headCell.disablePadding ? "none" : "default"}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
+            sortDirection={orderBy === headCell.id ? order : false}>
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}
-            >
+              onClick={createSortHandler(headCell.id)}>
               {headCell.label}
               {orderBy === headCell.id ? (
                 <span className={classes.visuallyHidden}>
@@ -165,15 +163,13 @@ const EnhancedTableToolbar = (props) => {
     <Toolbar
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
-      })}
-    >
+      })}>
       {numSelected > 0 ? (
         <Typography
           className={classes.title}
           color="inherit"
           variant="subtitle1"
-          component="div"
-        >
+          component="div">
           {numSelected} selected
         </Typography>
       ) : (
@@ -181,8 +177,7 @@ const EnhancedTableToolbar = (props) => {
           className={classes.title}
           variant="h6"
           id="tableTitle"
-          component="div"
-        >
+          component="div">
           Choose your flight
         </Typography>
       )}
@@ -215,6 +210,12 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 20,
     width: 1,
+  },
+  bookbutton: {
+    color: "#ffffff",
+    backgroundColor: "#aa0d00",
+    marginTop: "1vh",
+    float: "right",
   },
 }));
 
@@ -287,8 +288,7 @@ export default function EnhancedTable(props) {
               className={classes.table}
               aria-labelledby="tableTitle"
               size={dense ? "small" : "medium"}
-              aria-label="enhanced table"
-            >
+              aria-label="enhanced table">
               <EnhancedTableHead
                 classes={classes}
                 order={order}
@@ -309,8 +309,7 @@ export default function EnhancedTable(props) {
                           align="center"
                           id={labelId}
                           scope="row"
-                          padding="none"
-                        >
+                          padding="none">
                           {row.departingDate}
                         </TableCell>
                         <TableCell align="center">{row.name}</TableCell>
@@ -353,20 +352,18 @@ export default function EnhancedTable(props) {
         />
 
         {!token ? (
-          <Button onClick={handleOpen}>
+          <Button className={classes.bookbutton} onClick={handleOpen}>
             <Dialog
               open={open}
               onClose={handleClose}
               aria-labelledby="auth-modal-login-signup"
               aria-describedby="auth-modal-login-signup"
               variant="contained"
-              color="primary"
-
-            >
+              color="primary">
               <DialogTitle>Login to book your trip</DialogTitle>
               <Login />
             </Dialog>
-            BOOK YOUR TRIP
+            BOOK YOUR TRIP!
           </Button>
         ) : (
           <Elements stripe={stripePromise}>

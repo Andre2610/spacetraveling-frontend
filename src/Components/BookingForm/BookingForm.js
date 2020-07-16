@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   dialogTextArea: {
     marginBottom: "0.7rem",
   },
+  bookbutton: {
+    marginTop: "1vh",
+    float: "right",
+  },
 }));
 
 export default function FormDialog(props) {
@@ -89,15 +93,18 @@ export default function FormDialog(props) {
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button
+        className={classes.bookbutton}
+        variant="contained"
+        color="primary"
+        onClick={handleClickOpen}>
         Book your trip!
       </Button>
       <Dialog
         className={classes.root}
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
+        aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Pay with card</DialogTitle>
         <DialogContent className={classes.root}>
           <TextField
@@ -132,8 +139,7 @@ export default function FormDialog(props) {
             variant="contained"
             onClick={handleClose}
             color="primary"
-            onClick={submithandler}
-          >
+            onClick={submithandler}>
             Buy ticket
           </Button>
         </DialogActions>
