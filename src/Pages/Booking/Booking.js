@@ -17,26 +17,16 @@ export default function Booking() {
     <div>
       <Container>
         <Row noGutters={true}>
-          <Col
-            className="d-none d-sm-block"
-            sm={2}
-            style={{ border: "1px solid red" }}
-          ></Col>
-          <Col xs={12} sm={8} style={{ border: "1px solid red" }}>
-            <Col xs={12} style={{ border: "1px solid red" }}>
+          <Col className="d-none d-sm-block" sm={2}></Col>
+          <Col xs={12} sm={8}>
+            <Col xs={12}>
               <PlanetForm />
             </Col>
             <Row noGutters={true}>
-              <Col xs={12} style={{ border: "1px solid green" }}>
-                {trips[0] ? <Triplist trips={trips} /> : null}
-              </Col>
+              <Col xs={12}>{trips[0] ? <Triplist trips={trips} /> : null}</Col>
             </Row>
           </Col>
-          <Col
-            className="d-none d-sm-block"
-            sm={2}
-            style={{ border: "1px solid red" }}
-          ></Col>
+          <Col className="d-none d-sm-block" sm={2}></Col>
         </Row>
       </Container>
     </div>
