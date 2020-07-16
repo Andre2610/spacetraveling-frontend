@@ -43,7 +43,7 @@ export default function Homepage() {
             />
           </Col>
           <Col xs={12} sm={8}>
-            <PlanetForm />
+            <PlanetForm planetData={planetData} />
 
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
