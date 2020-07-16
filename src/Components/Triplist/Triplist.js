@@ -22,12 +22,19 @@ import {
   Button,
 } from "@material-ui/core";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-import { Link } from "react-router-dom";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
 import BookingForm from "../BookingForm/BookingForm";
+import { selectToken } from "../../Store/user/selectors";
+import { selectUser } from "../../Store/user/selectors";
 
 //stripe
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
+
+import Login from "../Auth/Login";
+import Signup from "../Auth/SignUp";
 
 const stripePromise = loadStripe(
   "pk_test_51H4q6NJAyfM1fq6sEwTl9TPoJMud7gCiokANtJMluBYpWDXaj093V4PAfaABpH1vMki2der1mBFHM1vjRhs8DGUL00JFdEJO1Q"
@@ -94,7 +101,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align="center"
+            align='center'
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -158,18 +165,18 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 ? (
         <Typography
           className={classes.title}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
+          color='inherit'
+          variant='subtitle1'
+          component='div'
         >
           {numSelected} selected
         </Typography>
       ) : (
         <Typography
           className={classes.title}
-          variant="h6"
-          id="tableTitle"
-          component="div"
+          variant='h6'
+          id='tableTitle'
+          component='div'
         >
           Choose your flight
         </Typography>
@@ -208,6 +215,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EnhancedTable(props) {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
   //this usestate gives me tripINFO when radiobutton clicked
@@ -215,6 +223,20 @@ export default function EnhancedTable(props) {
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const token = useSelector(selectToken);
+  console.log("Token me up?", token);
+  const [toggleLogin, setToggleLogin] = useState(false);
+
+  const user = useSelector(selectUser);
+  // console.log("USER U THERE", user);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   function createData(trip) {
     const { id, departingDate, planetId, price } = trip;
@@ -255,12 +277,12 @@ export default function EnhancedTable(props) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <TableContainer>
-          <RadioGroup aria-label="flights" name="flights">
+          <RadioGroup aria-label='flights' name='flights'>
             <Table
               className={classes.table}
-              aria-labelledby="tableTitle"
+              aria-labelledby='tableTitle'
               size={dense ? "small" : "medium"}
-              aria-label="enhanced table"
+              aria-label='enhanced table'
             >
               <EnhancedTableHead
                 classes={classes}
@@ -278,24 +300,24 @@ export default function EnhancedTable(props) {
                     return (
                       <TableRow hover key={row.id}>
                         <TableCell
-                          component="th"
-                          align="center"
+                          component='th'
+                          align='center'
                           id={labelId}
-                          scope="row"
-                          padding="none"
+                          scope='row'
+                          padding='none'
                         >
                           {row.departingDate}
                         </TableCell>
-                        <TableCell align="center">{row.planetId}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">placeholder</TableCell>
-                        <TableCell align="center">
+                        <TableCell align='center'>{row.planetId}</TableCell>
+                        <TableCell align='center'>{row.price}</TableCell>
+                        <TableCell align='center'>placeholder</TableCell>
+                        <TableCell align='center'>
                           <FormControlLabel
                             value={row.id}
                             onClick={(e) => handleChange(row)}
                             control={
                               <Radio
-                                color="primary"
+                                color='primary'
                                 checked={
                                   parseInt(selected.id) === parseInt(row.id)
                                 }
@@ -317,25 +339,36 @@ export default function EnhancedTable(props) {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
-        {/* <Link to="/booking/checkout">
-          <Button color="primary" variant="contained">
-            Book now!
+
+        {!token ? (
+          <Button onClick={handleOpen}>
+            <Dialog
+              open={open}
+              onClose={handleClose}
+              aria-labelledby='auth-modal-login-signup'
+              aria-describedby='auth-modal-login-signup'
+            >
+              <DialogTitle>Login to book your trip</DialogTitle>
+              <Login />
+            </Dialog>
+            BOOK YOUR TRIP
           </Button>
-        </Link> */}
-        <Elements stripe={stripePromise}>
-          <BookingForm tripData={selected} />
-        </Elements>
+        ) : (
+          <Elements stripe={stripePromise}>
+            <BookingForm tripData={selected} userData={user} />
+          </Elements>
+        )}
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
+        label='Dense padding'
       />
     </div>
   );
