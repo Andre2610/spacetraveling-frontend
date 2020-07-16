@@ -65,7 +65,7 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Paper>
-        <Container disableGutters="true" maxWidth="100vw">
+        <Container disableGutters={true} maxWidth="xl">
           <CssBaseline />
           <Navbar darkMode={darkMode} set_darkMode={set_darkMode} />
           <Switch>
