@@ -75,6 +75,7 @@ export default function FormDialog(props) {
         email,
         cardholder,
         userId,
+        travelClass,
       });
       return data;
     }
