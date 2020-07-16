@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -18,16 +19,26 @@ import {
 import axios from "axios";
 import { URL } from "../../Config/constants";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // padding: theme.spacing(2),
+  },
+  dialogTextArea: {
+    marginBottom: "0.7rem",
+  },
+}));
+
 export default function FormDialog(props) {
+  const classes = useStyles();
   const { tripData } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [cardholder, setCardholder] = useState("");
 
-  let tripId = tripData.id;
-  let departingDate = tripData.departingDate;
-  let planetId = tripData.planetId;
-  let amount = tripData.price * 100;
+  const tripId = tripData.id;
+  const departingDate = tripData.departingDate;
+  const planetId = tripData.planetId;
+  const amount = tripData.price * 100;
 
   //stripe
   const stripe = useStripe();
@@ -36,11 +47,6 @@ export default function FormDialog(props) {
   //stripe form & call
   const submithandler = async (event) => {
     event.preventDefault();
-
-    console.log("Amount", amount);
-    console.log("Email", email);
-    console.log("cardholder", cardholder);
-    console.log("tripID", tripId);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -72,66 +78,51 @@ export default function FormDialog(props) {
 
   return (
     <>
-      <Button variant='outlined' color='primary' onClick={handleClickOpen}>
+      <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Book your trip!
       </Button>
       <Dialog
+        className={classes.root}
         open={open}
         onClose={handleClose}
-        aria-labelledby='form-dialog-title'
+        aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id='form-dialog-title'>Pay with card</DialogTitle>
-        <DialogContent>
-          <DialogContentText>email</DialogContentText>
+        <DialogTitle id="form-dialog-title">Pay with card</DialogTitle>
+        <DialogContent className={classes.root}>
           <TextField
             autoFocus
-            margin='dense'
-            id='name'
-            label='Email Address'
-            type='email'
+            className={classes.dialogTextArea}
+            id="email"
+            label="Email address"
+            type="email"
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </DialogContent>
-
-        <DialogContent>
-          <DialogContentText>Card information</DialogContentText>
-          <CardElement />
-        </DialogContent>
-
-        <DialogContent>
-          <DialogContentText>name on card</DialogContentText>
           <TextField
-            autoFocus
-            margin='dense'
-            id='cardholderName'
-            label='card information'
+            className={classes.dialogTextArea}
+            id="name"
+            type="text"
+            label="Name on card"
             fullWidth
             value={cardholder}
             onChange={(e) => setCardholder(e.target.value)}
           />
-        </DialogContent>
-
-        <DialogContent>
-          <DialogContentText>country or region</DialogContentText>
-          <NativeSelect id='select'>
-            <option value='netherlands'>Netherlands</option>
-            <option value='france'> France</option>
-            <option value='Germany'>Germany</option>
-            <option value='Portugal'>Portugal</option>
-            <option value='Spain'>Spain</option>
-            <option value='Italy'>Italy</option>
-            <option value='Romania'>Romania</option>
-            <option value='Russia'>Russia</option>
-            <option value='USA'>USA</option>
-          </NativeSelect>
+          <DialogContentText className={classes.dialogTextArea}>
+            Card information
+          </DialogContentText>
+          <CardElement className={classes.dialogTextArea} />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
+          <Button variant="contained" onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color='primary' onClick={submithandler}>
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            color="primary"
+            onClick={submithandler}
+          >
             Buy ticket
           </Button>
         </DialogActions>
