@@ -223,7 +223,6 @@ export default function EnhancedTable(props) {
   const [open, setOpen] = useState(false);
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
-  //this usestate gives me tripINFO when radiobutton clicked
   const [selected, setSelected] = useState({ id: null });
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
@@ -232,7 +231,6 @@ export default function EnhancedTable(props) {
   const [toggleLogin, setToggleLogin] = useState(false);
 
   const user = useSelector(selectUser);
-  // console.log("USER U THERE", user);
 
   const handleOpen = () => {
     setOpen(true);
@@ -361,7 +359,6 @@ export default function EnhancedTable(props) {
               aria-describedby="auth-modal-login-signup"
               variant="contained"
               color="primary"
-
             >
               <DialogTitle>Login to book your trip</DialogTitle>
               <Login />

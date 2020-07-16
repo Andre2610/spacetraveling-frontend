@@ -5,6 +5,7 @@ import GeomagnaticStorm from "./weather/GeomagnaticStorm/reducer";
 import user from "./user/reducer";
 import planet from "./planet/reducer";
 import trips from "./trips/reducer";
+import appState from "./appState/reducer";
 
 export default combineReducers({
   user,
@@ -13,4 +14,5 @@ export default combineReducers({
   GeomagnaticStorm,
   planet,
   trips,
+  appState,
 });
