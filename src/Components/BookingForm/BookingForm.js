@@ -72,7 +72,13 @@ export default function FormDialog(props) {
   };
 
   const handleClickOpen = () => {
-    setOpen(true);
+    console.log("got here?");
+    console.log("whats here", tripData);
+    if (!tripData.id) {
+      return;
+    } else {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
