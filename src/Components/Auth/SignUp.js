@@ -96,7 +96,7 @@ export default function SingUp(props) {
         </Button>
       </DialogActions>
       <DialogContentText className={classes.dialogFooter}>
-        already have an account? Login{" "}
+        Already have an account? Login{" "}
         <Typography
           component='span'
           onClick={(e) => set_modalForm("Login")}
