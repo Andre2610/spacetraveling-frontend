@@ -22,6 +22,16 @@ import {
   Button,
 } from "@material-ui/core";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
+import { Link } from "react-router-dom";
+import FormDialog from "../FormDialog/FormDialog";
+
+//stripe
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51H4q6NJAyfM1fq6sEwTl9TPoJMud7gCiokANtJMluBYpWDXaj093V4PAfaABpH1vMki2der1mBFHM1vjRhs8DGUL00JFdEJO1Q"
+);
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -84,7 +94,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align="center"
+            align='center'
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -148,18 +158,18 @@ const EnhancedTableToolbar = (props) => {
       {numSelected > 0 ? (
         <Typography
           className={classes.title}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
+          color='inherit'
+          variant='subtitle1'
+          component='div'
         >
           {numSelected} selected
         </Typography>
       ) : (
         <Typography
           className={classes.title}
-          variant="h6"
-          id="tableTitle"
-          component="div"
+          variant='h6'
+          id='tableTitle'
+          component='div'
         >
           Choose your flight
         </Typography>
@@ -200,6 +210,7 @@ export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
+  //this usestate gives me tripINFO when radiobutton clicked
   const [selected, setSelected] = useState({ id: null });
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
@@ -244,12 +255,12 @@ export default function EnhancedTable(props) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <TableContainer>
-          <RadioGroup aria-label="flights" name="flights">
+          <RadioGroup aria-label='flights' name='flights'>
             <Table
               className={classes.table}
-              aria-labelledby="tableTitle"
+              aria-labelledby='tableTitle'
               size={dense ? "small" : "medium"}
-              aria-label="enhanced table"
+              aria-label='enhanced table'
             >
               <EnhancedTableHead
                 classes={classes}
@@ -267,24 +278,24 @@ export default function EnhancedTable(props) {
                     return (
                       <TableRow hover key={row.id}>
                         <TableCell
-                          component="th"
-                          align="center"
+                          component='th'
+                          align='center'
                           id={labelId}
-                          scope="row"
-                          padding="none"
+                          scope='row'
+                          padding='none'
                         >
                           {row.departingDate}
                         </TableCell>
-                        <TableCell align="center">{row.planetId}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">placeholder</TableCell>
-                        <TableCell align="center">
+                        <TableCell align='center'>{row.planetId}</TableCell>
+                        <TableCell align='center'>{row.price}</TableCell>
+                        <TableCell align='center'>placeholder</TableCell>
+                        <TableCell align='center'>
                           <FormControlLabel
                             value={row.id}
                             onClick={(e) => handleChange(row)}
                             control={
                               <Radio
-                                color="primary"
+                                color='primary'
                                 checked={
                                   parseInt(selected.id) === parseInt(row.id)
                                 }
@@ -306,20 +317,25 @@ export default function EnhancedTable(props) {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
-          component="div"
+          component='div'
           count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
-        <Button color="primary" variant="contained">
-          Click me
-        </Button>
+        <Link to='/booking/checkout'>
+          <Button color='primary' variant='contained'>
+            Book now!
+          </Button>
+        </Link>
+        <Elements stripe={stripePromise}>
+          <FormDialog tripData={selected} />
+        </Elements>
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
+        label='Dense padding'
       />
     </div>
   );
