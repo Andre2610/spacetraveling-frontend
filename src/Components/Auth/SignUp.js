@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
 import { signUp } from "../../Store/user/actions";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogActions from "@material-ui/core/DialogActions";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  dialogFooter: {
+    fontSize: "0.8rem",
+    width: "100%",
+    textAlign: "center",
+  },
+}));
 
 export default function SingUp(props) {
+  const classes = useStyles();
   const { handleClose, set_modalForm } = props;
   const dispatch = useDispatch();
   const initialState = { firstName: "", lastName: "", email: "", password: "" };
@@ -17,71 +35,76 @@ export default function SingUp(props) {
   }
 
   return (
-    <div>
-      <form>
-        <div>
-          <input
-            value={signUpcredentials.firstName}
-            onChange={(event) =>
-              set_signUpcredentials({
-                ...signUpcredentials,
-                firstName: event.target.value,
-              })
-            }
-            type="text"
-            placeholder="please enter your first name"
-            required
-          />
-          <input
-            value={signUpcredentials.lastName}
-            onChange={(event) =>
-              set_signUpcredentials({
-                ...signUpcredentials,
-                lastName: event.target.value,
-              })
-            }
-            type="text"
-            placeholder="please enter your last name"
-            required
-          />
-          <input
-            value={signUpcredentials.email}
-            onChange={(event) =>
-              set_signUpcredentials({
-                ...signUpcredentials,
-                email: event.target.value,
-              })
-            }
-            type="email"
-            placeholder="please enter your email"
-            required
-          />
-          <input
-            value={signUpcredentials.password}
-            onChange={(event) =>
-              set_signUpcredentials({
-                ...signUpcredentials,
-                password: event.target.value,
-              })
-            }
-            type="password"
-            required
-          />
-          <button type="submit" onClick={submitForm}>
-            Sign Up
-          </button>
-        </div>
-      </form>
-      <p>
+    <DialogContent>
+      <TextField
+        value={signUpcredentials.firstName}
+        onChange={(event) =>
+          set_signUpcredentials({
+            ...signUpcredentials,
+            firstName: event.target.value,
+          })
+        }
+        type="text"
+        autoFocus
+        label="First name"
+        fullWidth
+        required
+      />
+      <TextField
+        value={signUpcredentials.lastName}
+        onChange={(event) =>
+          set_signUpcredentials({
+            ...signUpcredentials,
+            lastName: event.target.value,
+          })
+        }
+        type="text"
+        label="Last name"
+        fullWidth
+        required
+      />
+      <TextField
+        value={signUpcredentials.email}
+        onChange={(event) =>
+          set_signUpcredentials({
+            ...signUpcredentials,
+            email: event.target.value,
+          })
+        }
+        type="email"
+        label="Email address"
+        fullWidth
+        required
+      />
+      <TextField
+        value={signUpcredentials.password}
+        onChange={(event) =>
+          set_signUpcredentials({
+            ...signUpcredentials,
+            password: event.target.value,
+          })
+        }
+        type="password"
+        label="Password"
+        fullWidth
+        required
+      />
+      <DialogActions>
+        <Button variant="contained" color="primary" onClick={submitForm}>
+          Log in
+        </Button>
+      </DialogActions>
+      <Typography className={classes.dialogFooter}>
         Don't have an account yet? Sign up{" "}
-        <span
+        <Typography
+          component="span"
           onClick={(e) => set_modalForm("Login")}
           style={{ cursor: "pointer" }}
           color="blue.500"
         >
           HERE
-        </span>
-      </p>
-    </div>
+        </Typography>
+      </Typography>
+    </DialogContent>
   );
 }
