@@ -56,15 +56,14 @@ export const login = (credentials) => {
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
-
+    console.log("my token", token);
     if (token === null) return;
 
     // dispatch(appLoading());
     try {
-      const response = await axios.get(`${URL}/me`, {
+      const response = await axios.get(`${URL}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
       dispatch(tokenStillValid(response.data));
       //   dispatch(appDoneLoading());
     } catch (error) {
