@@ -80,9 +80,14 @@ const headCells = [
     label: "Destination",
   },
   { id: "price", numeric: true, disablePadding: false, label: "Price" },
-  { id: "carbs", numeric: true, disablePadding: false, label: "Placeholder" },
   {
-    id: "protein",
+    id: "distance",
+    numeric: true,
+    disablePadding: false,
+    label: "Distance in Km",
+  },
+  {
+    id: "checkMark",
     numeric: true,
     disablePadding: false,
     label: <CheckRoundedIcon />,
@@ -238,8 +243,9 @@ export default function EnhancedTable(props) {
   };
 
   function createData(trip) {
-    const { id, departingDate, planetId, price } = trip;
-    return { id, departingDate, planetId, price };
+    const { id, departingDate, price } = trip;
+    const { distance, name } = trip.planet;
+    return { id, departingDate, name, price, distance };
   }
 
   const rows = props.trips.map((trip) => {
@@ -307,9 +313,9 @@ export default function EnhancedTable(props) {
                         >
                           {row.departingDate}
                         </TableCell>
-                        <TableCell align="center">{row.planetId}</TableCell>
+                        <TableCell align="center">{row.name}</TableCell>
                         <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">placeholder</TableCell>
+                        <TableCell align="center">{row.distance}</TableCell>
                         <TableCell align="center">
                           <FormControlLabel
                             value={row.id}
@@ -355,6 +361,7 @@ export default function EnhancedTable(props) {
               aria-describedby="auth-modal-login-signup"
               variant="contained"
               color="primary"
+
             >
               <DialogTitle>Login to book your trip</DialogTitle>
               <Login />
