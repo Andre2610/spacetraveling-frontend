@@ -8,6 +8,7 @@
   max-width: 70vw;
 }
 
-.Stewardess {
-  padding-bottom: 5vh;
+.Stewardess,
+.Rover {
+  padding-bottom: 1vh;
 }
