@@ -43,6 +43,7 @@ export default function FormDialog(props) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [cardholder, setCardholder] = useState("");
+  const [travelClass, setTravelClass] = useState("");
 
   const tripId = tripData.id;
   const departingDate = tripData.departingDate;
@@ -96,6 +97,8 @@ export default function FormDialog(props) {
     setOpen(false);
   };
 
+  console.log("VALUE1", travelClass);
+
   return (
     <>
       <Button
@@ -137,6 +140,7 @@ export default function FormDialog(props) {
             defaultValue='Economy Class'
             label='Travel Class'
             name='customized-radios'
+            onChange={(e) => setTravelClass(e.target.value)}
           >
             <FormControlLabel
               value='Economy Class'
