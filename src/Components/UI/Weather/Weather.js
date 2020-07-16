@@ -30,7 +30,6 @@ const useStyles = makeStyles({
 });
 
 export default function Weather(props) {
-  console.log("my props", props);
   const { startTime, note, sourceLocation, link } = props.objectToShow;
   const classes = useStyles();
   return (
