@@ -56,7 +56,6 @@ export const login = (credentials) => {
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
-    console.log("my token", token);
     if (token === null) return;
 
     // dispatch(appLoading());
