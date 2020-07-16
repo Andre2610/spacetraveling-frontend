@@ -13,6 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import Image from "../../../Images/cme.gif";
 
 const useStyles = makeStyles({
+
   title: {
     fontWeight: "bold",
     marginLeft: "1vw",
