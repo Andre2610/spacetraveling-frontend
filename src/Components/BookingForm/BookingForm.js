@@ -7,7 +7,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { NativeSelect } from "@material-ui/core";
+import {
+  NativeSelect,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@material-ui/core";
 
 //stripe
 import {
@@ -95,51 +100,75 @@ export default function FormDialog(props) {
     <>
       <Button
         className={classes.bookbutton}
-        variant="contained"
-        color="primary"
-        onClick={handleClickOpen}>
+        variant='contained'
+        color='primary'
+        onClick={handleClickOpen}
+      >
         Book your trip!
       </Button>
       <Dialog
         className={classes.root}
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Pay with card</DialogTitle>
+        aria-labelledby='form-dialog-title'
+      >
+        <DialogTitle id='form-dialog-title'>Pay with card</DialogTitle>
         <DialogContent className={classes.root}>
           <TextField
             autoFocus
             className={classes.dialogTextArea}
-            id="email"
-            label="Email address"
-            type="email"
+            id='email'
+            label='Email address'
+            type='email'
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             className={classes.dialogTextArea}
-            id="name"
-            type="text"
-            label="Name on card"
+            id='name'
+            type='text'
+            label='Name on card'
             fullWidth
             value={cardholder}
             onChange={(e) => setCardholder(e.target.value)}
           />
+          <RadioGroup
+            defaultValue='Economy Class'
+            label='Travel Class'
+            name='customized-radios'
+          >
+            <FormControlLabel
+              value='Economy Class'
+              control={<Radio />}
+              label='Economy Class'
+            />
+            <FormControlLabel
+              value='Business Class'
+              control={<Radio />}
+              label='Business Class'
+            />
+            <FormControlLabel
+              value='First Class'
+              control={<Radio />}
+              label='First Class'
+            />
+          </RadioGroup>
           <DialogContentText className={classes.dialogTextArea}>
             Card information
           </DialogContentText>
           <CardElement className={classes.dialogTextArea} />
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={handleClose} color="primary">
+          <Button variant='contained' onClick={handleClose} color='primary'>
             Cancel
           </Button>
           <Button
-            variant="contained"
+            variant='contained'
             onClick={handleClose}
-            color="primary"
-            onClick={submithandler}>
+            color='primary'
+            onClick={submithandler}
+          >
             Buy ticket
           </Button>
         </DialogActions>
