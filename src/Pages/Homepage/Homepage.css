@@ -10,16 +10,12 @@
 
 .Stewardess,
 .Rover {
+  margin: 0 1vh;
   padding-bottom: 1vh;
 }
 
-.AdContainer {
-  background-color: gray;
-  padding: 1vw;
-}
-
-.Accomodation,
-.Rentarover {
-  margin: 1vw;
+.Rentarover,
+.Accomodation {
+  margin: 1vw 1vw 1vw 0;
   border-radius: 0.5vw;
 }
