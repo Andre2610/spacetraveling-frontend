@@ -75,7 +75,6 @@ export default function Login(props) {
           component="span"
           onClick={(e) => set_modalForm("Signup")}
           style={{ cursor: "pointer" }}
-          color="blue.500"
         >
           HERE
         </Typography>
