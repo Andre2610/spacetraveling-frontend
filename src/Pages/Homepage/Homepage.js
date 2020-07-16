@@ -19,6 +19,7 @@ import ImageRent from "../../Images/rentarover.svg";
 export default function Homepage() {
   const dispatch = useDispatch();
   const planetData = useSelector(selectPlanet);
+
   useEffect(() => {
     dispatch(getCME());
     dispatch(getPlanetInfo());
