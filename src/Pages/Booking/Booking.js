@@ -21,7 +21,6 @@ export default function Booking() {
     if (!planetData[0]) dispatch(getPlanetInfo());
   }, [dispatch]);
 
-  console.log("is it true", planetData[0]);
   return (
     <div>
       <Container>

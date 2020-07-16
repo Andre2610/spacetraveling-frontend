@@ -229,7 +229,6 @@ export default function EnhancedTable(props) {
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const token = useSelector(selectToken);
-  console.log("Token me up?", token);
   const [toggleLogin, setToggleLogin] = useState(false);
 
   const user = useSelector(selectUser);
@@ -360,6 +359,9 @@ export default function EnhancedTable(props) {
               onClose={handleClose}
               aria-labelledby="auth-modal-login-signup"
               aria-describedby="auth-modal-login-signup"
+              variant="contained"
+              color="primary"
+
             >
               <DialogTitle>Login to book your trip</DialogTitle>
               <Login />

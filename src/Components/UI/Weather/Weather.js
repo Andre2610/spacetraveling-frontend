@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import Link from "@material-ui/core/Link";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -13,7 +13,6 @@ import Divider from "@material-ui/core/Divider";
 import Image from "../../../Images/cme.gif";
 
 const useStyles = makeStyles({
-
   title: {
     fontWeight: "bold",
     marginLeft: "1vw",
@@ -48,14 +47,16 @@ export default function Weather(props) {
               className={classes.title}
               gutterBottom
               variant="h5"
-              component="h2">
+              component="h2"
+            >
               Weather
             </Typography>
             <Typography
               className={classes.text}
               variant="body2"
               color="textPrimary"
-              component="p">
+              component="p"
+            >
               {note}
             </Typography>
             <Divider />
@@ -66,11 +67,12 @@ export default function Weather(props) {
             </List>
             <Button
               className={classes.btn}
-              variant="contained"
               component={Link}
-              to={link}
+              href={link}
+              variant="contained"
               size="small"
-              color="primary">
+              color="primary"
+            >
               More info
             </Button>
           </CardContent>

@@ -14,7 +14,6 @@ export function getTripsList() {
   return async (dispatch, getState) => {
     try {
       const res = await axios.get(`${URL}/trips`);
-      console.log("What my info", res.data);
       dispatch(fetchedAllTrips(res.data));
     } catch (e) {
       console.log(e);
