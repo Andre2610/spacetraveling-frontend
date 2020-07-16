@@ -23,6 +23,16 @@ import {
 } from "@material-ui/core";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import { Link } from "react-router-dom";
+import FormDialog from "../FormDialog/FormDialog";
+import PaymentForm from "../payment/PaymentForm";
+
+//stripe
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51H4q6NJAyfM1fq6sEwTl9TPoJMud7gCiokANtJMluBYpWDXaj093V4PAfaABpH1vMki2der1mBFHM1vjRhs8DGUL00JFdEJO1Q"
+);
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -201,6 +211,7 @@ export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = useState("calories");
+  //this usestate gives me tripINFO when radiobutton clicked
   const [selected, setSelected] = useState({ id: null });
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
@@ -319,6 +330,9 @@ export default function EnhancedTable(props) {
             Book now!
           </Button>
         </Link>
+        <Elements stripe={stripePromise}>
+          <FormDialog tripData={selected} />
+        </Elements>
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
