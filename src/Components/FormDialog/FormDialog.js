@@ -21,12 +21,13 @@ import { URL } from "../../Config/constants";
 export default function FormDialog(props) {
   const { tripData } = props;
   const [open, setOpen] = React.useState(false);
-  const [planetID, setPlanetID] = useState("");
-  const [price, setPrice] = useState("");
-  const [departingDate, setDepartingDate] = useState("");
-  console.log("WHAT ARE MY DIALOG WORKING PROPS?", tripData);
-  console.log("WORKING?", planetID);
-  setPlanetID(tripData.planetId);
+  const [email, setEmail] = useState("");
+  const [cardholder, setCardholder] = useState("");
+
+  let tripId = tripData.id;
+  let departingDate = tripData.departingDate;
+  let planetId = tripData.planetId;
+  let amount = tripData.price * 100;
 
   //stripe
   const stripe = useStripe();
@@ -35,7 +36,11 @@ export default function FormDialog(props) {
   //stripe form & call
   const submithandler = async (event) => {
     event.preventDefault();
-    const amount = 20000;
+
+    console.log("Amount", amount);
+    console.log("Email", email);
+    console.log("cardholder", cardholder);
+    console.log("tripID", tripId);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -44,7 +49,15 @@ export default function FormDialog(props) {
 
     if (!error) {
       const { id } = paymentMethod;
-      const data = axios.post(`${URL}/checkout`, { id, amount });
+      const data = axios.post(`${URL}/checkout`, {
+        id,
+        amount,
+        tripId,
+        departingDate,
+        planetId,
+        email,
+        cardholder,
+      });
       return data;
     }
   };
@@ -58,7 +71,7 @@ export default function FormDialog(props) {
   };
 
   return (
-    <form onSubmit={submithandler}>
+    <>
       <Button variant='outlined' color='primary' onClick={handleClickOpen}>
         Book your trip!
       </Button>
@@ -77,6 +90,8 @@ export default function FormDialog(props) {
             label='Email Address'
             type='email'
             fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </DialogContent>
 
@@ -93,6 +108,8 @@ export default function FormDialog(props) {
             id='cardholderName'
             label='card information'
             fullWidth
+            value={cardholder}
+            onChange={(e) => setCardholder(e.target.value)}
           />
         </DialogContent>
 
@@ -114,11 +131,11 @@ export default function FormDialog(props) {
           <Button onClick={handleClose} color='primary'>
             Cancel
           </Button>
-          <Button onClick={handleClose} color='primary' type='submit'>
+          <Button onClick={handleClose} color='primary' onClick={submithandler}>
             Buy ticket
           </Button>
         </DialogActions>
       </Dialog>
-    </form>
+    </>
   );
 }
