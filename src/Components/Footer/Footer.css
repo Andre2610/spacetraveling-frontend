@@ -1,0 +1,34 @@
+.FooterContainer {
+  background-color: #aa0d00;
+  padding: 2vh;
+}
+
+.LogoCol {
+  text-align: center;
+  padding: 2vh;
+}
+
+.Logo {
+  max-height: 10vh;
+}
+
+.ContactCol h5,
+.AboutCol h5 {
+  font-weight: bold;
+  color: white;
+  text-align: left;
+  padding-top: 3vh;
+}
+
+.ContactCol ul,
+.AboutCol ul {
+  font-weight: bold;
+  color: white;
+  padding-left: 0;
+  list-style: none;
+}
+
+.ContactCol li,
+.AboutCol li {
+  margin-top: 1vh;
+}
