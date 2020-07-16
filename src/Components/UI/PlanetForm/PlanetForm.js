@@ -7,7 +7,6 @@ import Box from "@material-ui/core/Box";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import "./PlanetForm.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,8 +66,7 @@ export default function PlanetForm(props) {
           inputProps={{
             name: "age",
             id: "filled-age-native-simple",
-          }}
-        >
+          }}>
           <option aria-label="None" value="" />
           {props.planetData.map((planet) => {
             return (
@@ -84,8 +82,7 @@ export default function PlanetForm(props) {
             component={Link}
             to="/booking"
             color="primary"
-            variant="contained"
-          >
+            variant="contained">
             Book here
           </Button>
         </Box>
