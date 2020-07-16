@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#aa0d00",
     backgroundColor: "#ffffff",
+    "&:hover": {
+      color: "#000000",
+      backgroundColor: "#ffa000",
+    },
   },
 }));
 

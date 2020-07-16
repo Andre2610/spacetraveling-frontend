@@ -76,7 +76,6 @@ export default function ButtonAppBar(props) {
                 edge="start"
                 color="inherit"
                 aria-label="menu">
-                {/* <FlightTakeoffIcon fontSize="large" /> */}
                 <SvgIcon component={LogoIcon} viewBox="0 0 96 96" />
               </IconButton>
               {darkModeButton()}
