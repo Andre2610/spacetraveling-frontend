@@ -1,6 +1,6 @@
 .FooterContainer {
   background-color: #aa0d00;
-  padding: 2vh;
+  padding: 1vh 0 5vh 0;
 }
 
 .LogoCol {
@@ -17,14 +17,14 @@
   font-weight: bold;
   color: white;
   text-align: left;
-  padding-top: 3vh;
+  padding: 3vh 3vw 0;
 }
 
 .ContactCol ul,
 .AboutCol ul {
   font-weight: bold;
   color: white;
-  padding-left: 0;
+  padding: 0 3vw;
   list-style: none;
 }
 
