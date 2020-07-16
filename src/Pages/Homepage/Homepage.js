@@ -40,12 +40,8 @@ export default function Homepage() {
             />
           </Col>
           <Col xs={12} sm={8}>
-            <Col xs={12} style={{ padding: "5vh" }}>
+            <Col xs={12}>
               <PlanetForm />
-
-              <Link to="/booking">
-                <Button>Book here</Button>
-              </Link>
             </Col>
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
