@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login(props) {
   const classes = useStyles();
-  const { handleClose, set_modalForm } = props;
+  const { set_modalForm } = props;
   const dispatch = useDispatch();
   const initialState = { email: "", password: "" };
   const [credentials, set_credentials] = useState(initialState);

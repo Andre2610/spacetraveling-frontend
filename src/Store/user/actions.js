@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL, ISADMINCODE } from "../../Config/constants";
+import { URL } from "../../Config/constants";
 import { selectToken } from "./selectors";
 import {
   showMessageWithTimeout,
