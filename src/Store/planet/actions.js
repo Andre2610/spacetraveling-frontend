@@ -21,6 +21,7 @@ export function getPlanetInfo() {
       dispatch(appLoading());
       const res = await Axios.get(`${URL}/planet`);
       dispatch(planetFetchSuccess(res.data));
+      dispatch(appDoneLoading());
     } catch (error) {
       console.log(error);
       dispatch(showMessageWithTimeout("error", true, error.message, 4000));
