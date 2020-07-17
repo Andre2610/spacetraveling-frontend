@@ -32,3 +32,10 @@
 .AboutCol li {
   margin-top: 1vh;
 }
+.GitLink {
+  color: #ffffff;
+}
+.GitLink:hover {
+  color: #ffaa00;
+  text-decoration: none;
+}
