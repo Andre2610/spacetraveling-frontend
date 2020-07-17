@@ -30,7 +30,7 @@ function App() {
       primary: {
         light: "#DB6666",
         main: "#AA0D00",
-        dark: "#FF0000",
+        dark: "#242424", // button hovering color when in dark
       },
       secondary: {
         light: "#474747",
@@ -78,12 +78,12 @@ function App() {
       primary: {
         light: "#DB6666",
         main: "#AA0D00",
-        dark: "#CBCACA",
+        dark: "#890000", // button hovering color in light mode
       },
       secondary: {
         light: "#474747",
         main: "#B0B0B0",
-        dark: "#7C00FF",
+        dark: "#CBCACA",
       },
       selectBackground: { light: "#FF6F00", main: "#FFA000", dark: "#FFD54F" },
       selectMenu: { light: "#FF6F00", main: "#EEEEEE", dark: "#FFD54F" },
