@@ -219,6 +219,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     marginTop: "1vh",
     float: "right",
+    "&:hover": { backgroundColor: "#ffa000", color: "#000000" },
   },
   tablehead: {
     backgroundColor: theme.palette.primary.main,
@@ -396,7 +397,7 @@ export default function EnhancedTable(props) {
       <FormControlLabel
         control={
           <Switch
-            color="primary"
+            color="secondary"
             checked={dense}
             onChange={handleChangeDense}
           />
