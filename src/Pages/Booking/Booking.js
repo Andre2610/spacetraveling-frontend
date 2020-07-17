@@ -9,7 +9,7 @@ import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
 import Triplist from "../../Components/Triplist/Triplist";
 import ImageSpacePerson from "../../Images/spaceperson.svg";
 import ImageSpaceCol from "../../Images/spacecol.svg";
-import ImageBookbanner from "../../Images/bookbanner.svg";
+import ImageBookingbanner from "../../Images/bookingsbanner.svg";
 import "./Booking.css";
 
 export default function Booking() {
@@ -36,9 +36,9 @@ export default function Booking() {
           </Col>
           <Col xs={12} sm={8}>
             <img
-              className="Bookbanner"
-              src={ImageBookbanner}
-              alt="bookbanner"
+              className="Bookingsbanner"
+              src={ImageBookingbanner}
+              alt="bookingsbanner"
             />
             <Row noGutters={true}>
               <Col xs={12}>
