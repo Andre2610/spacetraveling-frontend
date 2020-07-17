@@ -2,6 +2,7 @@
   background-image: url("../../Images/bannerbg.svg");
   background-position: center;
   text-align: center;
+  animation: animatedBackground 250s linear infinite;
 }
 
 .Rocket {
@@ -22,4 +23,14 @@
 .Accomodation {
   margin: 1vw 1vw 1vw 0;
   border-radius: 0.5vw;
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 -10000px;
+  }
+  /*use negative width if you want it to flow right to left else and positive for left to right*/
+  to {
+    background-position: 0 0;
+  }
 }
