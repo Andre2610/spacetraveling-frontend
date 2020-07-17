@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTripsList } from "../../Store/trips/actions";
 import { getPlanetInfo } from "../../Store/planet/actions";
-import { selectTrips } from "../../Store/trips/selectors";
+import { selectTrips, selectFilteredTrips } from "../../Store/trips/selectors";
 import { selectPlanet } from "../../Store/planet/selectors";
 import { Container, Row, Col } from "react-bootstrap";
 import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
@@ -12,9 +12,13 @@ import ImageSpaceCol from "../../Images/spacecol.svg";
 import "./Booking.css";
 
 export default function Booking() {
+  const [selectFilter, set_selectFilter] = useState([]);
   const dispatch = useDispatch();
   const planetData = useSelector(selectPlanet);
-  const trips = useSelector(selectTrips);
+  const allTrips = useSelector(selectTrips);
+  const filteredTrips = useSelector(selectFilteredTrips(selectFilter));
+  const trips = filteredTrips[0] ? filteredTrips : allTrips;
+  console.log("my trips", trips);
 
   useEffect(() => {
     if (!trips[0]) dispatch(getTripsList());
@@ -31,7 +35,12 @@ export default function Booking() {
           </Col>
           <Col xs={12} sm={8}>
             <Col xs={12}>
-              <PlanetForm planetData={planetData} show={false} />
+              <PlanetForm
+                planetData={planetData}
+                show={false}
+                selectFilter={selectFilter}
+                set_selectFilter={set_selectFilter}
+              />
             </Col>
             <Row noGutters={true}>
               <Col xs={12}>{trips[0] ? <Triplist trips={trips} /> : null}</Col>

@@ -40,11 +40,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PlanetForm(props) {
+  const { set_selectFilter, selectFilter } = props;
   const classes = useStyles();
   const [selectedPlanet, set_selectedPlanet] = useState("");
 
   function handleChange(e) {
-    set_selectedPlanet(e.target.value);
+    set_selectFilter(e.target.value);
   }
 
   const showButton = props.show ? (
@@ -74,7 +75,7 @@ export default function PlanetForm(props) {
           native
           fullWidth
           className={classes.select}
-          value={selectedPlanet}
+          value={selectFilter}
           onChange={(e) => handleChange(e)}
           inputProps={{
             name: "age",
