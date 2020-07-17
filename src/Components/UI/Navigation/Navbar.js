@@ -7,7 +7,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
-import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import Brightness2 from "@material-ui/icons/Brightness2";
 import Brightness7 from "@material-ui/icons/Brightness7";
 import AuthModal from "../../Auth/AuthModal";

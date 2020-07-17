@@ -32,7 +32,6 @@ import { selectUser } from "../../Store/user/selectors";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
-import AuthModal from "../Auth/AuthModal";
 import Login from "../Auth/Login";
 import Signup from "../Auth/SignUp";
 
@@ -95,7 +94,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { classes, order, orderBy, rowCount, onRequestSort } = props;
+  const { classes, order, orderBy, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };

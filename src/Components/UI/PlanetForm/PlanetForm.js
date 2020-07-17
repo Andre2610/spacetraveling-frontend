@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
 export default function PlanetForm(props) {
   const { set_selectFilter, selectFilter } = props;
   const classes = useStyles();
-  const [selectedPlanet, set_selectedPlanet] = useState("");
 
   function handleChange(e) {
     set_selectFilter(e.target.value);

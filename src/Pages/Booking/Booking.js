@@ -19,12 +19,11 @@ export default function Booking() {
   const allTrips = useSelector(selectTrips);
   const filteredTrips = useSelector(selectFilteredTrips(selectFilter));
   const trips = filteredTrips[0] ? filteredTrips : allTrips;
-  console.log("my trips", trips);
 
   useEffect(() => {
     if (!trips[0]) dispatch(getTripsList());
     if (!planetData[0]) dispatch(getPlanetInfo());
-  }, [dispatch]);
+  }, [dispatch, planetData, trips]);
 
   return (
     <div>
