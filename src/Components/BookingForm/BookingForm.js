@@ -15,9 +15,7 @@ import axios from "axios";
 import { URL } from "../../Config/constants";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // padding: theme.spacing(2),
-  },
+  root: {},
   dialogTextArea: {
     marginBottom: "0.7rem",
   },
@@ -67,6 +65,8 @@ export default function FormDialog(props) {
         cardholder,
         userId,
         travelClass,
+        firstName,
+        lastName,
       });
       return data && handleClose();
     }
