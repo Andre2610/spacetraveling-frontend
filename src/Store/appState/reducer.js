@@ -19,7 +19,6 @@ export default (state = initialState, action) => {
       return { ...state, loading: false };
 
     case SET_MESSAGE:
-      console.log("In the reducer");
       return { ...state, message: action.payload };
 
     case CLEAR_MESSAGE:
