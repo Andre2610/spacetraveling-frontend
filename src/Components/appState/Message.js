@@ -13,7 +13,6 @@ export default function MessageBox() {
   const message = useSelector(selectMessage);
   const dispatch = useDispatch();
   const showMessage = message !== null;
-  console.log("do I get gere?", message);
   if (!showMessage) return null;
 
   return (
