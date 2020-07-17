@@ -8,6 +8,10 @@
   max-width: 70vw;
 }
 
+.Bookbanner {
+  margin: 1vh 0;
+}
+
 .Stewardess,
 .Rover {
   margin: 0 1vh;
