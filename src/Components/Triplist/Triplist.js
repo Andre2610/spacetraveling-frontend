@@ -234,6 +234,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
+  const { trips } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [order, setOrder] = useState("asc");
@@ -261,7 +262,7 @@ export default function EnhancedTable(props) {
     return { id, departingDate, name, price, distance };
   }
 
-  const rows = props.trips.map((trip) => {
+  const rows = trips.map((trip) => {
     return createData(trip);
   });
 
