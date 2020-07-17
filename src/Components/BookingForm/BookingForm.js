@@ -47,9 +47,12 @@ export default function FormDialog(props) {
 
   const tripId = tripData.id;
   const departingDate = tripData.departingDate;
-  const planetId = tripData.planetId;
+  const planetName = tripData.name;
   const amount = tripData.price * 100;
+
   const userId = userData.id;
+  const firstName = userData.firstName;
+  const lastName = userData.lastName;
 
   //stripe
   const stripe = useStripe();
@@ -71,7 +74,7 @@ export default function FormDialog(props) {
         amount,
         tripId,
         departingDate,
-        planetId,
+        planetName,
         email,
         cardholder,
         userId,
@@ -82,9 +85,12 @@ export default function FormDialog(props) {
     handleClose();
   };
 
+  // console.log("TRIPDATA", tripData);
+  // console.log("WHO DIS BITCH", userData);
+
   const handleClickOpen = () => {
-    console.log("got here?");
-    console.log("whats here", tripData);
+    // console.log("got here?");
+    // console.log("whats here", tripData);
     if (!tripData.id) {
       return;
     } else {
