@@ -8,6 +8,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import SupervisorAccountRoundedIcon from "@material-ui/icons/SupervisorAccountRounded";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,13 +28,20 @@ export default function SingUp(props) {
   const classes = useStyles();
   const { handleClose, set_modalForm } = props;
   const dispatch = useDispatch();
-  const initialState = { firstName: "", lastName: "", email: "", password: "" };
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    isAdmin: false,
+    isAdminCode: "",
+  };
   const [signUpcredentials, set_signUpcredentials] = useState(initialState);
 
   function submitForm(event) {
     event.preventDefault();
     dispatch(signUp(signUpcredentials));
-
+    handleClose();
     set_signUpcredentials(initialState);
   }
 
@@ -45,9 +55,9 @@ export default function SingUp(props) {
             firstName: event.target.value,
           })
         }
-        type='text'
+        type="text"
         autoFocus
-        label='First name'
+        label="First name"
         fullWidth
         required
       />
@@ -59,8 +69,8 @@ export default function SingUp(props) {
             lastName: event.target.value,
           })
         }
-        type='text'
-        label='Last name'
+        type="text"
+        label="Last name"
         fullWidth
         required
       />
@@ -72,8 +82,8 @@ export default function SingUp(props) {
             email: event.target.value,
           })
         }
-        type='email'
-        label='Email address'
+        type="email"
+        label="Email address"
         fullWidth
         required
       />
@@ -85,23 +95,57 @@ export default function SingUp(props) {
             password: event.target.value,
           })
         }
-        type='password'
-        label='Password'
+        type="password"
+        label="Password"
         fullWidth
         required
       />
+      <DialogContentText>
+        <FormControlLabel
+          control={
+            <Checkbox
+              icon={<SupervisorAccountRoundedIcon />}
+              checkedIcon={<SupervisorAccountRoundedIcon />}
+              value={signUpcredentials.isAdmin}
+              onChange={(event) =>
+                set_signUpcredentials({
+                  ...signUpcredentials,
+                  isAdmin: !signUpcredentials.isAdmin,
+                })
+              }
+              name="isAdmin"
+              color="primary"
+            />
+          }
+          label="Is this an administrator account?"
+        />
+      </DialogContentText>
+      {signUpcredentials.isAdmin ? (
+        <TextField
+          value={signUpcredentials.isAdminCode}
+          onChange={(event) =>
+            set_signUpcredentials({
+              ...signUpcredentials,
+              isAdminCode: event.target.value,
+            })
+          }
+          type="password"
+          label="Password to create administrator account"
+          fullWidth
+          required
+        />
+      ) : null}
       <DialogActions>
-        <Button variant='contained' color='primary' onClick={submitForm}>
-          Log in
+        <Button variant="contained" color="primary" onClick={submitForm}>
+          Submit
         </Button>
       </DialogActions>
       <DialogContentText className={classes.dialogFooter}>
         Already have an account? Login{" "}
         <Typography
-          component='span'
+          component="span"
           onClick={(e) => set_modalForm("Login")}
           style={{ cursor: "pointer" }}
-          color='blue.500'
         >
           HERE
         </Typography>
