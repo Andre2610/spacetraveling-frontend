@@ -7,20 +7,10 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import {
-  NativeSelect,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-} from "@material-ui/core";
+import { RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 
 //stripe
-import {
-  CardElement,
-  useStripe,
-  useElements,
-  Elements,
-} from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { URL } from "../../Config/constants";
 
@@ -51,8 +41,6 @@ export default function FormDialog(props) {
   const amount = tripData.price * 100;
 
   const userId = userData.id;
-  const firstName = userData.firstName;
-  const lastName = userData.lastName;
 
   //stripe
   const stripe = useStripe();
@@ -80,9 +68,8 @@ export default function FormDialog(props) {
         userId,
         travelClass,
       });
-      return data;
+      return data && handleClose();
     }
-    handleClose();
   };
 
   // console.log("TRIPDATA", tripData);
@@ -110,8 +97,8 @@ export default function FormDialog(props) {
     <>
       <Button
         className={classes.bookbutton}
-        variant='contained'
-        color='primary'
+        variant="contained"
+        color="primary"
         onClick={handleClickOpen}
       >
         Book your trip!
@@ -120,49 +107,49 @@ export default function FormDialog(props) {
         className={classes.root}
         open={open}
         onClose={handleClose}
-        aria-labelledby='form-dialog-title'
+        aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id='form-dialog-title'>Pay with card</DialogTitle>
+        <DialogTitle id="form-dialog-title">Pay with card</DialogTitle>
         <DialogContent className={classes.root}>
           <TextField
             autoFocus
             className={classes.dialogTextArea}
-            id='email'
-            label='Email address'
-            type='email'
+            id="email"
+            label="Email address"
+            type="email"
             fullWidth
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             className={classes.dialogTextArea}
-            id='name'
-            type='text'
-            label='Name on card'
+            id="name"
+            type="text"
+            label="Name on card"
             fullWidth
             value={cardholder}
             onChange={(e) => setCardholder(e.target.value)}
           />
           <RadioGroup
-            defaultValue='Economy Class'
-            label='Travel Class'
-            name='customized-radios'
+            defaultValue="Economy Class"
+            label="Travel Class"
+            name="customized-radios"
             onChange={(e) => setTravelClass(e.target.value)}
           >
             <FormControlLabel
-              value='Economy Class'
+              value="Economy Class"
               control={<Radio />}
-              label='Economy Class'
+              label="Economy Class"
             />
             <FormControlLabel
-              value='Business Class'
+              value="Business Class"
               control={<Radio />}
-              label='Business Class'
+              label="Business Class"
             />
             <FormControlLabel
-              value='First Class'
+              value="First Class"
               control={<Radio />}
-              label='First Class'
+              label="First Class"
             />
           </RadioGroup>
           <DialogContentText className={classes.dialogTextArea}>
@@ -171,15 +158,10 @@ export default function FormDialog(props) {
           <CardElement className={classes.dialogTextArea} />
         </DialogContent>
         <DialogActions>
-          <Button variant='contained' onClick={handleClose} color='primary'>
+          <Button variant="contained" onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button
-            variant='contained'
-            onClick={handleClose}
-            color='primary'
-            onClick={submithandler}
-          >
+          <Button variant="contained" color="primary" onClick={submithandler}>
             Buy ticket
           </Button>
         </DialogActions>

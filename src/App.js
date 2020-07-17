@@ -17,8 +17,6 @@ import {
   Paper,
   createMuiTheme,
 } from "@material-ui/core";
-import CoronalMassInjection from "./Components/APIs/SpaceWeather/CoronalMassInjection";
-import SolarFlares from "./Components/APIs/SpaceWeather/SolarFlares";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +24,11 @@ function App() {
   const [darkMode, set_darkMode] = useState(false);
 
   const darkTheme = createMuiTheme({
+    breakpoints: {
+      values: {
+        xxl: "100vw",
+      },
+    },
     palette: {
       primary: {
         light: "#DB6666",
@@ -41,11 +44,6 @@ function App() {
       selectMenu: { light: "#FF6F00", main: "#546E7A", dark: "#FFD54F" },
       type: "dark",
       background: { paper: "#212121" },
-      breakpoint: {
-        values: {
-          xxl: "100vw",
-        },
-      },
     },
     overrides: {
       MuiLink: {
@@ -74,6 +72,11 @@ function App() {
   });
 
   const lightTheme = createMuiTheme({
+    // breakpoints: {
+    //   values: {
+    //     xxl: "100vw",
+    //   },
+    // },
     palette: {
       primary: {
         light: "#DB6666",
@@ -88,11 +91,6 @@ function App() {
       selectBackground: { light: "#FF6F00", main: "#FFA000", dark: "#FFD54F" },
       selectMenu: { light: "#FF6F00", main: "#EEEEEE", dark: "#FFD54F" },
       type: "light",
-    },
-    breakpoint: {
-      values: {
-        xxl: "100vw",
-      },
     },
     overrides: {
       MuiLink: {
@@ -125,7 +123,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
-  }, [darkMode]);
+  }, [dispatch, darkMode]);
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Paper>
