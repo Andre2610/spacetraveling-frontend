@@ -20,17 +20,26 @@ export default function Footer() {
         <Col xs={12} sm={4} className="ContactCol">
           <h5>Contact us</h5>
           <ul>
-            <a className="GitLink" href="#">
+            <a
+              className="GitLink"
+              href="https://github.com/Andre2610/spacetraveling-frontend"
+            >
               <li>
                 <PhoneIcon /> via Phone
               </li>
             </a>
-            <a className="GitLink" href="#">
+            <a
+              className="GitLink"
+              href="https://github.com/Andre2610/spacetraveling-frontend"
+            >
               <li>
                 <FacebookIcon /> 24/7 via Facebook
               </li>
             </a>
-            <a className="GitLink" href="#">
+            <a
+              className="GitLink"
+              href="https://github.com/Andre2610/spacetraveling-frontend"
+            >
               <li>
                 <TwitterIcon /> 24/7 via Twitter
               </li>
@@ -48,17 +57,26 @@ export default function Footer() {
         <Col xs={12} sm={4} className="AboutCol">
           <h5>About Space Travel Inc.</h5>
           <ul>
-            <a className="GitLink" href="#">
+            <a
+              className="GitLink"
+              href="https://github.com/Andre2610/spacetraveling-frontend"
+            >
               <li>
                 <BusinessIcon /> Corporate
               </li>
             </a>
-            <a className="GitLink" href="#">
+            <a
+              className="GitLink"
+              href="https://github.com/Andre2610/spacetraveling-frontend"
+            >
               <li>
                 <WorkIcon /> Careers
               </li>
             </a>
-            <a className="GitLink" href="#">
+            <a
+              className="GitLink"
+              href="https://github.com/Andre2610/spacetraveling-frontend"
+            >
               <li>
                 <WarningIcon /> Disclaimers
               </li>
