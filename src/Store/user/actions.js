@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URL } from "../../Config/constants";
+import { URL, ISADMINCODE } from "../../Config/constants";
 import { selectToken } from "./selectors";
 import {
   showMessageWithTimeout,
@@ -92,7 +92,6 @@ export const signUp = (signUpcredentials) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      console.log("my signupCredentials", signUpcredentials);
       const res = await axios.post(`${URL}/auth/signup`, {
         signUpcredentials,
       });
@@ -103,15 +102,9 @@ export const signUp = (signUpcredentials) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(
-          showMessageWithTimeout(
-            "error",
-            true,
-            error.response.data.message,
-            4000
-          )
-        );
+        const message = "Unable to create account";
+        console.log("My error", error.response.data.message);
+        dispatch(showMessageWithTimeout("error", true, message, 4000));
       } else {
         console.log(error.message);
         dispatch(showMessageWithTimeout("error", true, error.message, 4000));
