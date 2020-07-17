@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: theme.spacing(2),
   },
-  // inputText: {
-  //   marginBottom: "1rem",
-  // },
   dialogFooter: {
     fontSize: "0.8rem",
     width: "100%",
@@ -42,7 +39,6 @@ export default function Login(props) {
     <DialogContent>
       <TextField
         autoFocus
-        // className={classes.inputText}
         value={credentials.email}
         onChange={(event) =>
           set_credentials({
@@ -57,7 +53,6 @@ export default function Login(props) {
       />
       <TextField
         value={credentials.password}
-        // className={classes.inputText}
         onChange={(event) =>
           set_credentials({
             ...credentials,

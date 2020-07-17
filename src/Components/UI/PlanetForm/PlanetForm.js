@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "2vh 0",
     padding: "1.5vh 5vw 0.5vh 5vw",
     backgroundColor: theme.palette.selectBackground.main,
-    borderRadius: "1vw",
+    borderRadius: "0.5rem",
   },
   btnBox: {
     width: "100%",
@@ -54,13 +54,12 @@ export default function PlanetForm(props) {
         component={Link}
         to="/booking"
         color="primary"
-        variant="contained">
+        variant="contained"
+      >
         Book here
       </Button>
     </Box>
-  ) : (
-    <Box></Box>
-  );
+  ) : null;
 
   return (
     <Box className={classes.root}>
@@ -80,7 +79,8 @@ export default function PlanetForm(props) {
           inputProps={{
             name: "age",
             id: "filled-age-native-simple",
-          }}>
+          }}
+        >
           <option aria-label="None" value="" />
           {props.planetData.map((planet) => {
             return (

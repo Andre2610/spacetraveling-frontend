@@ -33,9 +33,9 @@ function App() {
         dark: "#FF0000",
       },
       secondary: {
-        light: "#1565C0",
-        main: "#039BE5",
-        dark: "#81D4FA",
+        light: "#B69BD2",
+        main: "#9459D2",
+        dark: "#7C00FF",
       },
       selectBackground: { light: "#FF6F00", main: "#424242", dark: "#FFD54F" },
       selectMenu: { light: "#FF6F00", main: "#546E7A", dark: "#FFD54F" },
@@ -47,8 +47,33 @@ function App() {
         },
       },
     },
+    overrides: {
+      MuiLink: {
+        root: {
+          textDecorationColor: "none",
+          "&:hover": { textDecoration: "none", textTransform: "none" },
+        },
+      },
+      MuiButton: {
+        root: {
+          "&:hover": {
+            // color: "white",
+            // textDecoration: "none",
+            // backgroundColor: "#ffa000",
+          },
+        },
+        // remove textTransform if you want buttons to be in uppercase
+        contained: { textTransform: "none", textDecorationColor: "none" },
+      },
+    },
     props: {
-      MuiTextField: { variant: "outlined", InputLabelProps: { shrink: true } },
+      MuiTextField: {
+        variant: "outlined",
+        margin: "normal",
+      },
+      MuiButton: {
+        variant: "contained",
+      },
     },
   });
 
@@ -73,10 +98,33 @@ function App() {
         xxl: "100vw",
       },
     },
+    overrides: {
+      MuiLink: {
+        root: {
+          textDecorationColor: "none",
+          "&:hover": { textDecoration: "none", textTransform: "none" },
+        },
+      },
+      MuiButton: {
+        root: {
+          "&:hover": {
+            color: "white",
+            textDecoration: "none",
+            backgroundColor: "#ffa000",
+          },
+        },
+
+        // remove textTransform if you want buttons to be in uppercase
+        contained: { textTransform: "none", textDecorationColor: "none" },
+      },
+    },
     props: {
       MuiTextField: {
         variant: "outlined",
         margin: "normal",
+      },
+      MuiButton: {
+        variant: "contained",
       },
     },
   });
