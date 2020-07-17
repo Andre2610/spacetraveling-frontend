@@ -33,9 +33,9 @@ function App() {
         dark: "#FF0000",
       },
       secondary: {
-        light: "#B69BD2",
-        main: "#9459D2",
-        dark: "#7C00FF",
+        light: "#474747",
+        main: "#B0B0B0",
+        dark: "#CBCACA",
       },
       selectBackground: { light: "#FF6F00", main: "#424242", dark: "#FFD54F" },
       selectMenu: { light: "#FF6F00", main: "#546E7A", dark: "#FFD54F" },
@@ -50,20 +50,16 @@ function App() {
     overrides: {
       MuiLink: {
         root: {
-          textDecorationColor: "none",
-          "&:hover": { textDecoration: "none", textTransform: "none" },
+          "&:hover": { textDecoration: "none" },
         },
       },
       MuiButton: {
         root: {
           "&:hover": {
-            // color: "white",
-            // textDecoration: "none",
-            // backgroundColor: "#ffa000",
+            color: "white",
+            backgroundColor: "#ffa000",
           },
         },
-        // remove textTransform if you want buttons to be in uppercase
-        contained: { textTransform: "none", textDecorationColor: "none" },
       },
     },
     props: {
@@ -82,11 +78,11 @@ function App() {
       primary: {
         light: "#DB6666",
         main: "#AA0D00",
-        dark: "#FF0000",
+        dark: "#CBCACA",
       },
       secondary: {
-        light: "#B69BD2",
-        main: "#9459D2",
+        light: "#474747",
+        main: "#B0B0B0",
         dark: "#7C00FF",
       },
       selectBackground: { light: "#FF6F00", main: "#FFA000", dark: "#FFD54F" },
@@ -101,21 +97,18 @@ function App() {
     overrides: {
       MuiLink: {
         root: {
-          textDecorationColor: "none",
-          "&:hover": { textDecoration: "none", textTransform: "none" },
+          "&:hover": { textDecoration: "none" },
         },
       },
       MuiButton: {
         root: {
           "&:hover": {
             color: "white",
-            textDecoration: "none",
             backgroundColor: "#ffa000",
           },
         },
-
-        // remove textTransform if you want buttons to be in uppercase
-        contained: { textTransform: "none", textDecorationColor: "none" },
+        // uncomment textTransform if you want buttons to not be uppercased
+        // contained: { textTransform: "none", textDecorationColor: "none" },
       },
     },
     props: {
