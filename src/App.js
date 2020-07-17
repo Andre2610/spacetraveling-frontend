@@ -30,12 +30,12 @@ function App() {
       primary: {
         light: "#DB6666",
         main: "#AA0D00",
-        dark: "#FF0000",
+        dark: "#242424", // button hovering color when in dark
       },
       secondary: {
-        light: "#1565C0",
-        main: "#039BE5",
-        dark: "#81D4FA",
+        light: "#474747",
+        main: "#B0B0B0",
+        dark: "#CBCACA",
       },
       selectBackground: { light: "#FF6F00", main: "#424242", dark: "#FFD54F" },
       selectMenu: { light: "#FF6F00", main: "#546E7A", dark: "#FFD54F" },
@@ -47,6 +47,30 @@ function App() {
         },
       },
     },
+    overrides: {
+      MuiLink: {
+        root: {
+          "&:hover": { textDecoration: "none" },
+        },
+      },
+      MuiButton: {
+        root: {
+          "&:hover": {
+            color: "white",
+            backgroundColor: "#ffa000",
+          },
+        },
+      },
+    },
+    props: {
+      MuiTextField: {
+        variant: "outlined",
+        margin: "normal",
+      },
+      MuiButton: {
+        variant: "contained",
+      },
+    },
   });
 
   const lightTheme = createMuiTheme({
@@ -54,12 +78,12 @@ function App() {
       primary: {
         light: "#DB6666",
         main: "#AA0D00",
-        dark: "#FF0000",
+        dark: "#890000", // button hovering color in light mode
       },
       secondary: {
-        light: "#B69BD2",
-        main: "#9459D2",
-        dark: "#7C00FF",
+        light: "#474747",
+        main: "#B0B0B0",
+        dark: "#CBCACA",
       },
       selectBackground: { light: "#FF6F00", main: "#FFA000", dark: "#FFD54F" },
       selectMenu: { light: "#FF6F00", main: "#EEEEEE", dark: "#FFD54F" },
@@ -68,6 +92,32 @@ function App() {
     breakpoint: {
       values: {
         xxl: "100vw",
+      },
+    },
+    overrides: {
+      MuiLink: {
+        root: {
+          "&:hover": { textDecoration: "none" },
+        },
+      },
+      MuiButton: {
+        root: {
+          "&:hover": {
+            color: "white",
+            backgroundColor: "#ffa000",
+          },
+        },
+        // uncomment textTransform if you want buttons to not be uppercased
+        // contained: { textTransform: "none", textDecorationColor: "none" },
+      },
+    },
+    props: {
+      MuiTextField: {
+        variant: "outlined",
+        margin: "normal",
+      },
+      MuiButton: {
+        variant: "contained",
       },
     },
   });

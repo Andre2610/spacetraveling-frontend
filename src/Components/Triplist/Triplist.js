@@ -32,7 +32,7 @@ import { selectUser } from "../../Store/user/selectors";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
-
+import AuthModal from "../Auth/AuthModal";
 import Login from "../Auth/Login";
 import Signup from "../Auth/SignUp";
 
@@ -108,12 +108,14 @@ function EnhancedTableHead(props) {
             key={headCell.id}
             align="center"
             padding={headCell.disablePadding ? "none" : "default"}
-            sortDirection={orderBy === headCell.id ? order : false}>
+            sortDirection={orderBy === headCell.id ? order : false}
+          >
             <TableSortLabel
               className={classes.tableheadtext}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
-              onClick={createSortHandler(headCell.id)}>
+              onClick={createSortHandler(headCell.id)}
+            >
               {headCell.label}
               {orderBy === headCell.id ? (
                 <span className={classes.visuallyHidden}>
@@ -164,13 +166,15 @@ const EnhancedTableToolbar = (props) => {
     <Toolbar
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
-      })}>
+      })}
+    >
       {numSelected > 0 ? (
         <Typography
           className={classes.title}
           color="inherit"
           variant="subtitle1"
-          component="div">
+          component="div"
+        >
           {numSelected} selected
         </Typography>
       ) : (
@@ -178,7 +182,8 @@ const EnhancedTableToolbar = (props) => {
           className={classes.title}
           variant="h6"
           id="tableTitle"
-          component="div">
+          component="div"
+        >
           Choose your flight
         </Typography>
       )}
@@ -211,16 +216,17 @@ const useStyles = makeStyles((theme) => ({
   },
   bookbutton: {
     color: "#ffffff",
-    backgroundColor: "#aa0d00",
+    backgroundColor: theme.palette.primary.main,
     marginTop: "1vh",
     float: "right",
+    "&:hover": { backgroundColor: "#ffa000", color: "#000000" },
   },
   tablehead: {
-    backgroundColor: "#aa0d00",
+    backgroundColor: theme.palette.primary.main,
   },
   tableheadtext: {
     color: "#ffffff",
-    textAlign: "bold",
+    fontWeight: "bold",
     "&:hover": {
       color: "#ffa000",
     },
@@ -237,7 +243,7 @@ export default function EnhancedTable(props) {
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const token = useSelector(selectToken);
-  const [toggleLogin, setToggleLogin] = useState(false);
+  const [modalForm, set_modalForm] = useState("Login");
 
   const user = useSelector(selectUser);
 
@@ -285,6 +291,13 @@ export default function EnhancedTable(props) {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
+  const formToDisplay =
+    modalForm === "Login" ? (
+      <Login handleClose={handleClose} set_modalForm={set_modalForm} />
+    ) : (
+      <Signup handleClose={handleClose} set_modalForm={set_modalForm} />
+    );
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -294,7 +307,8 @@ export default function EnhancedTable(props) {
               className={classes.table}
               aria-labelledby="tableTitle"
               size={dense ? "small" : "medium"}
-              aria-label="enhanced table">
+              aria-label="enhanced table"
+            >
               <EnhancedTableHead
                 classes={classes}
                 order={order}
@@ -315,7 +329,8 @@ export default function EnhancedTable(props) {
                           align="center"
                           id={labelId}
                           scope="row"
-                          padding="none">
+                          padding="none"
+                        >
                           {row.departingDate}
                         </TableCell>
                         <TableCell align="center">{row.name}</TableCell>
@@ -358,6 +373,7 @@ export default function EnhancedTable(props) {
         />
 
         {!token ? (
+          // buggy, cant click off of form
           <Button className={classes.bookbutton} onClick={handleOpen}>
             <Dialog
               open={open}
@@ -365,10 +381,10 @@ export default function EnhancedTable(props) {
               aria-labelledby="auth-modal-login-signup"
               aria-describedby="auth-modal-login-signup"
               variant="contained"
-              color="primary">
-
+              color="primary"
+            >
               <DialogTitle>Login to book your trip</DialogTitle>
-              <Login />
+              {formToDisplay}
             </Dialog>
             BOOK YOUR TRIP!
           </Button>
@@ -381,7 +397,7 @@ export default function EnhancedTable(props) {
       <FormControlLabel
         control={
           <Switch
-            color="primary"
+            color="secondary"
             checked={dense}
             onChange={handleChangeDense}
           />
