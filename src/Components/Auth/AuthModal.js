@@ -33,6 +33,7 @@ export default function AuthModal() {
   };
 
   const handleClose = () => {
+    set_modalForm("Login");
     setOpen(false);
   };
 
@@ -53,7 +54,8 @@ export default function AuthModal() {
         open={open}
         onClose={handleClose}
         aria-labelledby="auth-modal-login-signup"
-        aria-describedby="auth-modal-login-signup">
+        aria-describedby="auth-modal-login-signup"
+      >
         <DialogTitle id="form-dialog-title">{title}</DialogTitle>
         {formToDisplay}
       </Dialog>
