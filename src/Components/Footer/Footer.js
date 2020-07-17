@@ -9,7 +9,6 @@ import WarningIcon from "@material-ui/icons/Warning";
 import WorkIcon from "@material-ui/icons/Work";
 import BusinessIcon from "@material-ui/icons/Business";
 import GitHubIcon from "@material-ui/icons/GitHub";
-import Link from "@material-ui/core/Link";
 
 export default function Footer() {
   return (
@@ -39,7 +38,8 @@ export default function Footer() {
             <li>
               <a
                 className="GitLink"
-                href="https://github.com/Andre2610/spacetraveling-frontend">
+                href="https://github.com/Andre2610/spacetraveling-frontend"
+              >
                 <GitHubIcon /> Check our Repository
               </a>
             </li>
