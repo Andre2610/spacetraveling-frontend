@@ -15,6 +15,7 @@ import ImageStewardess from "../../Images/stew.svg";
 import ImageRover from "../../Images/rover.svg";
 import ImageAcc from "../../Images/accomodation.svg";
 import ImageRent from "../../Images/rentarover.svg";
+import ImageBookbanner from "../../Images/bookbanner.svg";
 
 export default function Homepage() {
   const dispatch = useDispatch();
@@ -44,8 +45,13 @@ export default function Homepage() {
             />
           </Col>
           <Col xs={12} sm={8}>
-            <PlanetForm planetData={planetData} show={true} />
-
+            <Link to="/booking">
+              <img
+                className="Bookbanner"
+                src={ImageBookbanner}
+                alt="bookbanner"
+              />
+            </Link>
             <Row noGutters={true}>
               <Col xs={12} sm={8}>
                 <PlanetCarousel planetsToShow={planetData} />
