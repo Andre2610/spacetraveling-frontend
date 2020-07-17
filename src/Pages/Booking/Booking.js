@@ -9,6 +9,7 @@ import PlanetForm from "../../Components/UI/PlanetForm/PlanetForm";
 import Triplist from "../../Components/Triplist/Triplist";
 import ImageSpacePerson from "../../Images/spaceperson.svg";
 import ImageSpaceCol from "../../Images/spacecol.svg";
+import ImageBookingbanner from "../../Images/bookingsbanner.svg";
 import "./Booking.css";
 
 export default function Booking() {
@@ -34,14 +35,21 @@ export default function Booking() {
             <img className="SpaceCol" src={ImageSpaceCol} alt="spaceCol" />
           </Col>
           <Col xs={12} sm={8}>
-            <Col xs={12}>
-              <PlanetForm
-                planetData={planetData}
-                show={false}
-                selectFilter={selectFilter}
-                set_selectFilter={set_selectFilter}
-              />
-            </Col>
+            <img
+              className="Bookingsbanner"
+              src={ImageBookingbanner}
+              alt="bookingsbanner"
+            />
+            <Row noGutters={true}>
+              <Col xs={12}>
+                <PlanetForm
+                  planetData={planetData}
+                  show={false}
+                  selectFilter={selectFilter}
+                  set_selectFilter={set_selectFilter}
+                />
+              </Col>
+            </Row>
             <Row noGutters={true}>
               <Col xs={12}>{trips[0] ? <Triplist trips={trips} /> : null}</Col>
             </Row>
