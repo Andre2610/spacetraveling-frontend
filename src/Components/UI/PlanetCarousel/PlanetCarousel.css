@@ -1,0 +1,14 @@
+.CarouselContainer {
+  padding: 0 1vw 0 0;
+}
+.CaptionContainer h3 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-shadow: 2px 2px #000000;
+}
+
+.CaptionContainer p {
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px #000000;
+}

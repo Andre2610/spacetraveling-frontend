@@ -1,0 +1,41 @@
+.FooterContainer {
+  background-color: #aa0d00;
+  padding: 1vh 0 5vh 0;
+}
+
+.LogoCol {
+  text-align: center;
+  padding: 2vh;
+}
+
+.Logo {
+  max-height: 10vh;
+}
+
+.ContactCol h5,
+.AboutCol h5 {
+  font-weight: bold;
+  color: white;
+  text-align: left;
+  padding: 3vh 3vw 0;
+}
+
+.ContactCol ul,
+.AboutCol ul {
+  font-weight: bold;
+  color: white;
+  padding: 0 3vw;
+  list-style: none;
+}
+
+.ContactCol li,
+.AboutCol li {
+  margin-top: 1vh;
+}
+.GitLink {
+  color: #ffffff;
+}
+.GitLink:hover {
+  color: #ffaa00;
+  text-decoration: none;
+}
