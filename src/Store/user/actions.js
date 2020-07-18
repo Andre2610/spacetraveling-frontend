@@ -95,8 +95,6 @@ export const signUp = (signUpcredentials) => {
       const res = await axios.post(`${URL}/auth/signup`, {
         signUpcredentials,
       });
-      console.log("my res", res.data);
-      dispatch(loginSuccess(res.data));
       const message = `Welcome to Duct Tape inc ${res.data.firstName}, please make sure to verify your account before logging in.`;
       dispatch(showMessageWithTimeout("success", true, message, 4000));
       dispatch(appDoneLoading());

@@ -14,6 +14,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
@@ -26,6 +27,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "initialize": "npm install && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
