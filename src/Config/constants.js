@@ -1,5 +1,4 @@
-// export const URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-export const URL = "http://localhost:5000";
+export const URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 export const DEFAULT_MESSAGE_TIMEOUT = 3000;
 export const NASAK =
   process.env.REACT_APP_NASAK || "Vm46Sua8HKQqccljF8wS2RdaxtfGeHyBLf8KHBzT";
