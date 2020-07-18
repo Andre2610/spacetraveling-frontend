@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# **Space Travel Agency**
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Introduction](#Introduction)
+- [Space Travel Agency](#Space-Travel-Agency)
+- [Goals of this project](#Goals-of-this-project)
+- [Technologies used](#Technologies-used)
+<!-- - [Demo](#Demo) -->
+- [Server repository](#Server-repository)
 
-### `npm start`
+## **Introduction**
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Hi, this project was built by Antony Smit, Sebastian Baez and myself during the group project week of our academy, it is a web application called Space Travel Agency. This is a MVP and not the final version. It is fully functional but missing some features that will be implemented in the future.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## **Space Travel Agency**
 
-### `npm test`
+The idea is to offer a travel experience similar to a travel agency but on a interplanetary level!
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Goals of this project**
 
-### `npm run build`
+The main goal of this project was to gain experience developing a full-stack app in a group while using version control. We tried to explore new technologies that none of us had tried before. It became our little Frankenstein with the amount of different technologies used for styling (CSS, Bootstrap, Material-UI). </br> We tried to commit with clear messages and when merging, we tried to provide a list of what was done.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Technologies used**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Back end**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Express
+- REST
+- Sequelize
+- Postgres
+- NodeJS
+- Nodemailer
+- Stripe
 
-### `npm run eject`
+**Front end**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React
+- Redux
+- Axios
+- React-Bootstrap
+- Material-UI
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**External API's**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [NASA API](https://api.nasa.gov/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- ## **Demo**
 
-## Learn More
+![General-use](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/generalview.gif?raw=true)
+![Login-singup](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/signup_signin.gif?raw=true)
+![Create-post](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/createpost.gif?raw=true)
+![End-trip](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/generalview.gif?raw=true) -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Server repository**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The back-end was built in express and it is a REST a API. The database is built using Postgres and Sequelize. You can find the back-end's repository [HERE](https://github.com/Andre2610/spacetraveling-backend)
 
-### Code Splitting
+## **Setup**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- **Server setup**
 
-### Analyzing the Bundle Size
+  - clone the repository;
+  - cd into the project directory
+  - on first run, run the script `npm run initialize`, this will run `npm i && npm run resetDB && npm run start`;
+  - afterwards simply run `npm run start` which will run the script `npx nodemon index.js` or `node index.js`
+  - server runs on port 5000 by default
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- **Client setup**
+  - clone the repository;
+  - cd into the project directory;
+  - on first run, run the script `npm run initialize`, this will run `npm install && react-scripts start`;
+  - afterwards first run just run the script `npm run start` to start development;
+  - client runs on localhost:3000 by default;
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+:exclamation: You will need to create your own NASA API key and place it on /config/constants.js `export const NASAK = YOUR_API_KEY`, in order for the app to your in your local host.
