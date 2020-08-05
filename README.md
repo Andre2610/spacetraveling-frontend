@@ -6,12 +6,12 @@
 - [Space Travel Agency](#Space-Travel-Agency)
 - [Goals of this project](#Goals-of-this-project)
 - [Technologies used](#Technologies-used)
-<!-- - [Demo](#Demo) -->
 - [Server repository](#Server-repository)
 
 ## **Introduction**
 
 Hi, this project was built by [Antony Smit](https://github.com/SmitnAntonyDv), [Sebastian Baez](https://github.com/sdbb21) and myself during the group project week of our academy, it is a web application called Space Travel Agency. This is a MVP and not the final version. It is fully functional but missing some features that will be implemented in the future.
+You can find a deployed version[here](https://spacetravelagency.netlify.app/)
 
 ## **Space Travel Agency**
 
@@ -44,13 +44,6 @@ The main goal of this project was to gain experience developing a full-stack app
 **External API's**
 
 - [NASA API](https://api.nasa.gov/)
-
-<!-- ## **Demo**
-
-![General-use](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/generalview.gif?raw=true)
-![Login-singup](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/signup_signin.gif?raw=true)
-![Create-post](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/createpost.gif?raw=true)
-![End-trip](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/generalview.gif?raw=true) -->
 
 ## **Server repository**
 
