@@ -11,7 +11,7 @@
 ## **Introduction**
 
 Hi, this project was built by [Antony Smit](https://github.com/SmitnAntonyDv), [Sebastian Baez](https://github.com/sdbb21) and myself during the group project week of our academy, it is a web application called Space Travel Agency. This is a MVP and not the final version. It is fully functional but missing some features that will be implemented in the future.
-You can find a deployed version[here](https://spacetravelagency.netlify.app/)
+You can find a deployed version [here](https://spacetravelagency.netlify.app/)
 
 ## **Space Travel Agency**
 
