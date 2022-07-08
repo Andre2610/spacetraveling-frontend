@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import {
   lighten,
   makeStyles,
@@ -20,23 +20,24 @@ import {
   Radio,
   RadioGroup,
   Button,
-} from "@material-ui/core";
-import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import BookingForm from "../BookingForm/BookingForm";
-import { selectToken } from "../../Store/user/selectors";
-import { selectUser } from "../../Store/user/selectors";
-
+} from '@material-ui/core';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import CheckRoundedIcon from '@material-ui/icons/CheckRounded';
 //stripe
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import { useSelector } from "react-redux";
-import Login from "../Auth/Login";
-import Signup from "../Auth/SignUp";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+
+import { selectToken } from '../../Store/user/selectors';
+import { selectUser } from '../../Store/user/selectors';
+import Login from '../Auth/Login';
+import Signup from '../Auth/SignUp';
+import BookingForm from '../BookingForm/BookingForm';
 
 const stripePromise = loadStripe(
-  "pk_test_51H4q6NJAyfM1fq6sEwTl9TPoJMud7gCiokANtJMluBYpWDXaj093V4PAfaABpH1vMki2der1mBFHM1vjRhs8DGUL00JFdEJO1Q"
+  'pk_test_51H4q6NJAyfM1fq6sEwTl9TPoJMud7gCiokANtJMluBYpWDXaj093V4PAfaABpH1vMki2der1mBFHM1vjRhs8DGUL00JFdEJO1Q'
 );
 
 function descendingComparator(a, b, orderBy) {
@@ -50,7 +51,7 @@ function descendingComparator(a, b, orderBy) {
 }
 
 function getComparator(order, orderBy) {
-  return order === "desc"
+  return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
@@ -67,26 +68,26 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
+    id: 'name',
     numeric: false,
     disablePadding: false,
-    label: "Departure Date",
+    label: 'Departure Date',
   },
   {
-    id: "destination",
+    id: 'destination',
     numeric: false,
     disablePadding: false,
-    label: "Destination",
+    label: 'Destination',
   },
-  { id: "price", numeric: true, disablePadding: false, label: "Price" },
+  { id: 'price', numeric: true, disablePadding: false, label: 'Price' },
   {
-    id: "distance",
+    id: 'distance',
     numeric: true,
     disablePadding: false,
-    label: "Distance in Km",
+    label: 'Distance in Km',
   },
   {
-    id: "checkMark",
+    id: 'checkMark',
     numeric: true,
     disablePadding: false,
     label: <CheckRoundedIcon />,
@@ -106,19 +107,19 @@ function EnhancedTableHead(props) {
           <TableCell
             key={headCell.id}
             align="center"
-            padding={headCell.disablePadding ? "none" : "default"}
+            padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
               className={classes.tableheadtext}
               active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : "asc"}
+              direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
                 <span className={classes.visuallyHidden}>
-                  {order === "desc" ? "sorted descending" : "sorted ascending"}
+                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </span>
               ) : null}
             </TableSortLabel>
@@ -132,7 +133,7 @@ function EnhancedTableHead(props) {
 EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
+  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
@@ -143,7 +144,7 @@ const useToolbarStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(1),
   },
   highlight:
-    theme.palette.type === "light"
+    theme.palette.type === 'light'
       ? {
           color: theme.palette.secondary.main,
           backgroundColor: lighten(theme.palette.secondary.light, 0.85),
@@ -153,7 +154,7 @@ const useToolbarStyles = makeStyles((theme) => ({
           backgroundColor: theme.palette.secondary.dark,
         },
   title: {
-    flex: "1 1 100%",
+    flex: '1 1 100%',
   },
 }));
 
@@ -168,21 +169,11 @@ const EnhancedTableToolbar = (props) => {
       })}
     >
       {numSelected > 0 ? (
-        <Typography
-          className={classes.title}
-          color="inherit"
-          variant="subtitle1"
-          component="div"
-        >
+        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography
-          className={classes.title}
-          variant="h6"
-          id="tableTitle"
-          component="div"
-        >
+        <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
           Choose your flight
         </Typography>
       )}
@@ -196,38 +187,38 @@ EnhancedTableToolbar.propTypes = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: '100%',
   },
   paper: {
-    width: "100%",
+    width: '100%',
     marginBottom: theme.spacing(2),
   },
   visuallyHidden: {
     border: 0,
-    clip: "rect(0 0 0 0)",
+    clip: 'rect(0 0 0 0)',
     height: 1,
     margin: -1,
-    overflow: "hidden",
+    overflow: 'hidden',
     padding: 0,
-    position: "absolute",
+    position: 'absolute',
     top: 20,
     width: 1,
   },
   bookbutton: {
-    color: "#ffffff",
+    color: '#ffffff',
     backgroundColor: theme.palette.primary.main,
-    marginTop: "1vh",
-    float: "right",
-    "&:hover": { backgroundColor: "#ffa000", color: "#000000" },
+    marginTop: '1vh',
+    float: 'right',
+    '&:hover': { backgroundColor: '#ffa000', color: '#000000' },
   },
   tablehead: {
     backgroundColor: theme.palette.primary.main,
   },
   tableheadtext: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    "&:hover": {
-      color: "#ffa000",
+    color: '#ffffff',
+    fontWeight: 'bold',
+    '&:hover': {
+      color: '#ffa000',
     },
   },
 }));
@@ -236,14 +227,14 @@ export default function EnhancedTable(props) {
   const { trips } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = useState("calories");
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('calories');
   const [selected, setSelected] = useState({ id: null });
   const [page, setPage] = useState(0);
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const token = useSelector(selectToken);
-  const [modalForm, set_modalForm] = useState("Login");
+  const [modalForm, set_modalForm] = useState('Login');
 
   const user = useSelector(selectUser);
 
@@ -266,8 +257,8 @@ export default function EnhancedTable(props) {
   });
 
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
@@ -284,15 +275,13 @@ export default function EnhancedTable(props) {
     setDense(event.target.checked);
   };
   const handleChange = (row) => {
-    console.log("value:", row);
     setSelected(row);
   };
 
-  const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   const formToDisplay =
-    modalForm === "Login" ? (
+    modalForm === 'Login' ? (
       <Login handleClose={handleClose} set_modalForm={set_modalForm} />
     ) : (
       <Signup handleClose={handleClose} set_modalForm={set_modalForm} />
@@ -306,7 +295,7 @@ export default function EnhancedTable(props) {
             <Table
               className={classes.table}
               aria-labelledby="tableTitle"
-              size={dense ? "small" : "medium"}
+              size={dense ? 'small' : 'medium'}
               aria-label="enhanced table"
             >
               <EnhancedTableHead
@@ -343,9 +332,7 @@ export default function EnhancedTable(props) {
                             control={
                               <Radio
                                 color="primary"
-                                checked={
-                                  parseInt(selected.id) === parseInt(row.id)
-                                }
+                                checked={parseInt(selected.id) === parseInt(row.id)}
                               />
                             }
                           />
@@ -395,13 +382,7 @@ export default function EnhancedTable(props) {
         )}
       </Paper>
       <FormControlLabel
-        control={
-          <Switch
-            color="secondary"
-            checked={dense}
-            onChange={handleChangeDense}
-          />
-        }
+        control={<Switch color="secondary" checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
     </div>

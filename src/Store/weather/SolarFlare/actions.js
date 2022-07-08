@@ -1,7 +1,8 @@
-import axios from "axios";
-import { NASAK, NASA_FLR_URL } from "../../../Config/constants";
+import axios from 'axios';
 
-export const FLR_FETCH_SUCCESS = "FLR_FETCH_SUCCESS";
+import { NASAK, NASA_FLR_URL } from '../../../Config/constants';
+
+export const FLR_FETCH_SUCCESS = 'FLR_FETCH_SUCCESS';
 
 export function fetchedFLRsuccess(data) {
   return {
@@ -14,10 +15,9 @@ export function getFLR() {
   return async (dispatch, getState) => {
     try {
       const res = await axios.get(`${NASA_FLR_URL}&api_key=${NASAK}`);
-      //   console.log("Whats my response?", res.data);
       dispatch(fetchedFLRsuccess(res.data[0]));
     } catch (e) {
-      console.log("ERROR MESSAGE:", e);
+      console.log('ERROR MESSAGE:', e);
     }
   };
 }

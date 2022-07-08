@@ -1,0 +1,12 @@
+{
+  "presets": ["react-app"],
+  "plugins": [
+    [
+      "react-intl-auto",
+      {
+        "removePrefix": true,
+        "filebase": false
+      }
+    ]
+  ]
+}

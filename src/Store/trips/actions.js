@@ -1,12 +1,9 @@
-import axios from "axios";
-import { URL } from "../../Config/constants";
-import {
-  showMessageWithTimeout,
-  appDoneLoading,
-  appLoading,
-} from "../appState/actions";
+import axios from 'axios';
 
-export const FETCH_ALL_TRIPS = "FETCH_ALL_TRIPS";
+import { URL } from '../../Config/constants';
+import { showMessageWithTimeout, appDoneLoading, appLoading } from '../appState/actions';
+
+export const FETCH_ALL_TRIPS = 'FETCH_ALL_TRIPS';
 
 export function fetchedAllTrips(data) {
   return {
@@ -23,8 +20,7 @@ export function getTripsList() {
       dispatch(fetchedAllTrips(res.data));
       dispatch(appDoneLoading());
     } catch (error) {
-      console.log(error);
-      dispatch(showMessageWithTimeout("error", true, error.message, 4000));
+      dispatch(showMessageWithTimeout('error', true, error.message, 4000));
       dispatch(appDoneLoading());
     }
   };

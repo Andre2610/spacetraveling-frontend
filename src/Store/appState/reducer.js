@@ -3,11 +3,13 @@ import {
   APP_DONE_LOADING,
   SET_MESSAGE,
   CLEAR_MESSAGE,
-} from "./actions";
+  TOGGLE_DARK_MODE,
+} from './actions';
 
 const initialState = {
   loading: false,
   message: null,
+  darkMode: false,
 };
 
 export default (state = initialState, action) => {
@@ -23,7 +25,8 @@ export default (state = initialState, action) => {
 
     case CLEAR_MESSAGE:
       return { ...state, message: null };
-
+    case TOGGLE_DARK_MODE:
+      return { ...state, darkMode: !state.darkMode };
     default:
       return state;
   }

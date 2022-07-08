@@ -1,0 +1,19 @@
+{
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "arrowParens": "always",
+  "importOrder": [
+    "^react.*$",
+    "^(Theme/(.*)|Config/(.*))$",
+    "^(Pages/(.*)|Components/(.*)|Store/(.*)|Images/(.*))$",
+    "<THIRD_PARTY_MODULES>",
+    "^reactstrap.*$",
+    "^@mui.*$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "endOfLine": "lf"
+}
