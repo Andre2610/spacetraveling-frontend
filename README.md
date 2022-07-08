@@ -45,7 +45,6 @@ The main goal of this project was to gain experience developing a full-stack app
 
 - [NASA API](https://api.nasa.gov/)
 
-<<<<<<< HEAD
 
 ## **Server repository**
 
