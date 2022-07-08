@@ -1,12 +1,7 @@
 import axios from 'axios';
 
 import { URL } from '../../Config/constants';
-import {
-  showMessageWithTimeout,
-  appDoneLoading,
-  appLoading,
-  setMessage,
-} from '../appState/actions';
+import { showMessageWithTimeout, appDoneLoading, appLoading } from '../appState/actions';
 import { selectToken } from './selectors';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -92,9 +87,10 @@ export const signUp = (signUpcredentials) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        const message = 'Unable to create account';
+        dispatch(showMessageWithTimeout('error', true, error.response.message, 4000));
       } else {
-        dispatch(showMessageWithTimeout('error', true, error.message, 4000));
+        const message = 'Unable to create account';
+        dispatch(showMessageWithTimeout('error', true, message, 4000));
       }
       dispatch(appDoneLoading());
     }
