@@ -1,28 +1,29 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
-import { showMessageWithTimeout } from "../../Store/appState/actions";
+import React, { useState } from 'react';
 
+import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 //stripe
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import axios from "axios";
-import { URL } from "../../Config/constants";
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import axios from 'axios';
+
+import { URL } from '../../Config/constants';
+import { showMessageWithTimeout } from '../../Store/appState/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   dialogTextArea: {
-    marginBottom: "0.7rem",
+    marginBottom: '0.7rem',
   },
   bookbutton: {
-    marginTop: "1vh",
-    float: "right",
+    marginTop: '1vh',
+    float: 'right',
   },
 }));
 
@@ -30,9 +31,9 @@ export default function FormDialog(props) {
   const classes = useStyles();
   const { tripData, userData } = props;
   const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [cardholder, setCardholder] = useState("");
-  const [travelClass, setTravelClass] = useState("Economy Class");
+  const [email, setEmail] = useState('');
+  const [cardholder, setCardholder] = useState('');
+  const [travelClass, setTravelClass] = useState('Economy Class');
 
   const tripId = tripData.id;
   const departingDate = tripData.departingDate;
@@ -52,7 +53,7 @@ export default function FormDialog(props) {
     event.preventDefault();
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
+      type: 'card',
       card: elements.getElement(CardElement),
     });
 
@@ -74,21 +75,16 @@ export default function FormDialog(props) {
       return (
         data &&
         showMessageWithTimeout(
-          "success",
+          'success',
           true,
-          "Your payment was successful, Please find booking confirmation in your Email"
+          'Your payment was successful, Please find booking confirmation in your Email'
         ) &&
         handleClose()
       );
     }
   };
 
-  // console.log("TRIPDATA", tripData);
-  // console.log("WHO DIS BITCH", userData);
-
   const handleClickOpen = () => {
-    // console.log("got here?");
-    // console.log("whats here", tripData);
     if (!tripData.id) {
       return;
     } else {
@@ -97,12 +93,10 @@ export default function FormDialog(props) {
   };
 
   const handleClose = () => {
-    setEmail("");
-    setCardholder("");
+    setEmail('');
+    setCardholder('');
     setOpen(false);
   };
-
-  console.log("VALUE1", travelClass);
 
   return (
     <>
@@ -147,25 +141,11 @@ export default function FormDialog(props) {
             name="customized-radios"
             onChange={(e) => setTravelClass(e.target.value)}
           >
-            <FormControlLabel
-              value="Economy Class"
-              control={<Radio />}
-              label="Economy Class"
-            />
-            <FormControlLabel
-              value="Business Class"
-              control={<Radio />}
-              label="Business Class"
-            />
-            <FormControlLabel
-              value="First Class"
-              control={<Radio />}
-              label="First Class"
-            />
+            <FormControlLabel value="Economy Class" control={<Radio />} label="Economy Class" />
+            <FormControlLabel value="Business Class" control={<Radio />} label="Business Class" />
+            <FormControlLabel value="First Class" control={<Radio />} label="First Class" />
           </RadioGroup>
-          <DialogContentText className={classes.dialogTextArea}>
-            Card information
-          </DialogContentText>
+          <DialogContentText className={classes.dialogTextArea}>Card information</DialogContentText>
           <CardElement className={classes.dialogTextArea} />
         </DialogContent>
         <DialogActions>

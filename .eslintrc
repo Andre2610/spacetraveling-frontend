@@ -1,0 +1,23 @@
+{
+  "extends": "react-app",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "autoFixOnSave": true,
+    "jsx": true,
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "semi": [2, "always"],
+    "no-irregular-whitespace": "error",
+    "jsx-a11y/anchor-is-valid": "off",
+    "import/no-anonymous-default-export": "off",
+    "no-mixed-operators": "off"
+  },
+  "plugins": ["react"]
+}
