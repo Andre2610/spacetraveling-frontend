@@ -68,8 +68,6 @@ The back-end was built in express and it is a REST a API. The database is built 
   - afterwards first run just run the script `npm run start` to start development;
   - client runs on localhost:3000 by default;
 
-=======
-
 <!-- ## **Demo**
 
 ![General-use](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/generalview.gif?raw=true)
@@ -98,5 +96,4 @@ The back-end was built in express and it is a REST a API. The database is built 
   - afterwards first run just run the script `npm run start` to start development;
   - client runs on localhost:3000 by default;
 
-> > > > > > > master
 > > > > > > > :exclamation: You will need to create your own NASA API key and place it on /config/constants.js `export const NASAK = YOUR_API_KEY`, in order for the app to your in your local host.
