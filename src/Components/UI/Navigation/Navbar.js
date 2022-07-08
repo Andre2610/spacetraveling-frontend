@@ -40,34 +40,6 @@ export default function ButtonAppBar(props) {
   const darkMode = useSelector(selectIsDarkModeOn);
   const classes = useStyles();
 
-  function darkModeButton() {
-    if (darkMode) {
-      return (
-        <IconButton
-          onClick={(e) => dispatch(toggleDarkMode())}
-          className={classes.menuButton}
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-        >
-          <Brightness7 fontSize="large" />
-        </IconButton>
-      );
-    } else {
-      return (
-        <IconButton
-          onClick={(e) => dispatch(toggleDarkMode())}
-          className={classes.menuButton}
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-        >
-          <Brightness2 fontSize="large" />
-        </IconButton>
-      );
-    }
-  }
-
   return (
     <Paper variant="elevation" color="primary">
       <AppBar position="static">
@@ -77,6 +49,7 @@ export default function ButtonAppBar(props) {
             alignItems="center"
             justifyContent="space-between"
             width="100%"
+            minHeight={65}
             marginX={4}
           >
             <Box>
@@ -93,7 +66,15 @@ export default function ButtonAppBar(props) {
             </Box>
             <Box display="flex" alignItems="center" justifyContent="flex-end">
               {user.token ? <Logout user={user} /> : <AuthModal />}
-              {darkModeButton()}
+              <IconButton
+                onClick={(e) => dispatch(toggleDarkMode())}
+                className={classes.menuButton}
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+              >
+                {darkMode ? <Brightness7 fontSize="large" /> : <Brightness2 fontSize="large" />}
+              </IconButton>
             </Box>
           </Box>
         </Toolbar>
