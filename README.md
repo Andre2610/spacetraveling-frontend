@@ -6,12 +6,12 @@
 - [Space Travel Agency](#Space-Travel-Agency)
 - [Goals of this project](#Goals-of-this-project)
 - [Technologies used](#Technologies-used)
-<!-- - [Demo](#Demo) -->
 - [Server repository](#Server-repository)
 
 ## **Introduction**
 
 Hi, this project was built by [Antony Smit](https://github.com/SmitnAntonyDv), [Sebastian Baez](https://github.com/sdbb21) and myself during the group project week of our academy, it is a web application called Space Travel Agency. This is a MVP and not the final version. It is fully functional but missing some features that will be implemented in the future.
+You can find a deployed version [here](https://spacetravelagency.netlify.app/)
 
 ## **Space Travel Agency**
 
@@ -45,6 +45,31 @@ The main goal of this project was to gain experience developing a full-stack app
 
 - [NASA API](https://api.nasa.gov/)
 
+<<<<<<< HEAD
+
+## **Server repository**
+
+The back-end was built in express and it is a REST a API. The database is built using Postgres and Sequelize. You can find the back-end's repository [HERE](https://github.com/Andre2610/spacetraveling-backend)
+
+## **Setup**
+
+- **Server setup**
+
+  - clone the repository;
+  - cd into the project directory
+  - on first run, run the script `npm run initialize`, this will run `npm i && npm run resetDB && npm run start`;
+  - afterwards simply run `npm run start` which will run the script `npx nodemon index.js` or `node index.js`
+  - server runs on port 5000 by default
+
+- **Client setup**
+  - clone the repository;
+  - cd into the project directory;
+  - on first run, run the script `npm run initialize`, this will run `npm install && react-scripts start`;
+  - afterwards first run just run the script `npm run start` to start development;
+  - client runs on localhost:3000 by default;
+
+=======
+
 <!-- ## **Demo**
 
 ![General-use](https://github.com/Andre2610/travelersdiary-front-end/blob/Development/Project_Info/generalview.gif?raw=true)
@@ -73,4 +98,5 @@ The back-end was built in express and it is a REST a API. The database is built 
   - afterwards first run just run the script `npm run start` to start development;
   - client runs on localhost:3000 by default;
 
-:exclamation: You will need to create your own NASA API key and place it on /config/constants.js `export const NASAK = YOUR_API_KEY`, in order for the app to your in your local host.
+> > > > > > > master
+> > > > > > > :exclamation: You will need to create your own NASA API key and place it on /config/constants.js `export const NASAK = YOUR_API_KEY`, in order for the app to your in your local host.

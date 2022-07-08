@@ -1,19 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Box from "@material-ui/core/Box";
-import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-import Brightness2 from "@material-ui/icons/Brightness2";
-import Brightness7 from "@material-ui/icons/Brightness7";
-import AuthModal from "../../Auth/AuthModal";
-import Logout from "../../Auth/Logout";
-import { selectUser } from "../../../Store/user/selectors";
-import { ReactComponent as LogoIcon } from "../../../Images/logoicon.svg";
-import SvgIcon from "@material-ui/core/SvgIcon";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import AuthModal from 'Components/Auth/AuthModal';
+import Logout from 'Components/Auth/Logout';
+import { ReactComponent as LogoIcon } from 'Images/logoicon.svg';
+import { toggleDarkMode } from 'Store/appState/actions';
+import { selectIsDarkModeOn } from 'Store/appState/selector';
+import { selectUser } from 'Store/user/selectors';
+
+import AppBar from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+import Brightness2 from '@material-ui/icons/Brightness2';
+import Brightness7 from '@material-ui/icons/Brightness7';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,19 +30,21 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   darkButton: {
-    marginLeft: "2vw",
+    marginLeft: '2vw',
   },
 }));
 
 export default function ButtonAppBar(props) {
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const darkMode = useSelector(selectIsDarkModeOn);
   const classes = useStyles();
 
   function darkModeButton() {
-    if (props.darkMode) {
+    if (darkMode) {
       return (
         <IconButton
-          onClick={(e) => props.set_darkMode(false)}
+          onClick={(e) => dispatch(toggleDarkMode())}
           className={classes.menuButton}
           edge="start"
           color="inherit"
@@ -50,7 +56,7 @@ export default function ButtonAppBar(props) {
     } else {
       return (
         <IconButton
-          onClick={(e) => props.set_darkMode(true)}
+          onClick={(e) => dispatch(toggleDarkMode())}
           className={classes.menuButton}
           edge="start"
           color="inherit"

@@ -1,15 +1,12 @@
-import axios from "axios";
-import { URL } from "../../Config/constants";
-import { selectToken } from "./selectors";
-import {
-  showMessageWithTimeout,
-  appDoneLoading,
-  appLoading,
-} from "../appState/actions";
+import axios from 'axios';
 
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
-export const LOG_OUT = "LOG_OUT";
+import { URL } from '../../Config/constants';
+import { showMessageWithTimeout, appDoneLoading, appLoading } from '../appState/actions';
+import { selectToken } from './selectors';
+
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const TOKEN_STILL_VALID = 'TOKEN_STILL_VALID';
+export const LOG_OUT = 'LOG_OUT';
 
 const loginSuccess = (userWithToken) => {
   return {
@@ -36,28 +33,18 @@ export const login = (credentials) => {
       if (res.data.verified) {
         dispatch(loginSuccess(res.data));
         const message = `Hello ${res.data.firstName}, welcome to the space travel agency.`;
-        dispatch(showMessageWithTimeout("success", false, message, 1500));
+        dispatch(showMessageWithTimeout('success', false, message, 1500));
         dispatch(appDoneLoading());
       } else {
-        console.log("message to verify account");
         const message = `Hello, ${res.data.firstName}, please verify your account by clicking the link sent to your email`;
-        dispatch(showMessageWithTimeout("info", false, message, 4000));
+        dispatch(showMessageWithTimeout('info', false, message, 4000));
         dispatch(appDoneLoading());
       }
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(
-          showMessageWithTimeout(
-            "error",
-            true,
-            error.response.data.message,
-            4000
-          )
-        );
+        dispatch(showMessageWithTimeout('error', true, error.response.data.message, 4000));
       } else {
-        console.log(error.message);
-        dispatch(showMessageWithTimeout("error", true, error.message, 4000));
+        dispatch(showMessageWithTimeout('error', true, error.message, 4000));
       }
       dispatch(appDoneLoading());
     }
@@ -96,16 +83,14 @@ export const signUp = (signUpcredentials) => {
         signUpcredentials,
       });
       const message = `Welcome to Duct Tape inc ${res.data.firstName}, please make sure to verify your account before logging in.`;
-      dispatch(showMessageWithTimeout("success", true, message, 4000));
+      dispatch(showMessageWithTimeout('success', true, message, 4000));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        const message = "Unable to create account";
-        console.log("My error", error.response.data.message);
-        dispatch(showMessageWithTimeout("error", true, message, 4000));
+        const message = 'Unable to create account';
+        dispatch(showMessageWithTimeout('error', true, message, 4000));
       } else {
-        console.log(error.message);
-        dispatch(showMessageWithTimeout("error", true, error.message, 4000));
+        dispatch(showMessageWithTimeout('error', true, error.message, 4000));
       }
       dispatch(appDoneLoading());
     }
