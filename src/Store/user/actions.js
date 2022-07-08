@@ -87,10 +87,10 @@ export const signUp = (signUpcredentials) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        dispatch(showMessageWithTimeout('error', true, error.response.message, 4000));
-      } else {
         const message = 'Unable to create account';
         dispatch(showMessageWithTimeout('error', true, message, 4000));
+      } else {
+        dispatch(showMessageWithTimeout('error', true, error.message, 4000));
       }
       dispatch(appDoneLoading());
     }

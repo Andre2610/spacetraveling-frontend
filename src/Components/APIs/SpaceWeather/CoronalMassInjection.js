@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getCME } from '../../../Store/weather/CoronalMassInjection/actions';
-import { selectCoronalMassInjection } from '../../../Store/weather/CoronalMassInjection/selectors';
+import { getCME } from 'Store/weather/CoronalMassInjection/actions';
+import { selectCoronalMassInjection } from 'Store/weather/CoronalMassInjection/selectors';
 
 export default function CoronalMassInjection() {
   const dispatch = useDispatch();
@@ -26,8 +26,7 @@ export default function CoronalMassInjection() {
           </p>
         </>
       );
-    }
-    {
+    } else {
       return <p>Loading data . . .</p>;
     }
   }
